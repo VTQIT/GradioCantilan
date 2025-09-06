@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GRADIO PORTAL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+  body { background-color:#000; color:#fff; }
+
+  .app-icon img { width:64px; height:64px; border-radius:50%; }
+  .swiper-button-next, .swiper-button-prev { display:none!important; }
+
+  /* Marquee */
+  @keyframes marquee { from{transform:translateX(100%);} to{transform:translateX(-100%);} }
+  .animate-marquee { display:inline-block; padding-left:100%; animation:marquee 12s linear infinite; will-change: transform; }
+
+  .nest-logo { height:28px; width:145px; object-fit:contain; }
+  @keyframes slideUp { from{transform:translateY(100%);opacity:0;} to{transform:translateY(0);opacity:1;} }
+  .animate-slideUp { animation:slideUp .8s ease-out forwards; }
+
+  /* Footer planets */
+  @keyframes spin-cw { from{transform:rotate(0);} to{transform:rotate(360deg);} }
+  @keyframes spin-ccw { from{transform:rotate(0);} to{transform:rotate(-360deg);} }
+  @keyframes pulse-blue { 0%,100%{filter:drop-shadow(0 0 8px #3b82f6);} 50%{filter:drop-shadow(0 0 20px #60a5fa);} }
+  @keyframes pulse-red  { 0%,100%{filter:drop-shadow(0 0 8px #ef4444);} 50%{filter:drop-shadow(0 0 20px #f87171);} }
+  .earth-anim { animation:spin-cw 20s linear infinite,pulse-blue 3s ease-in-out infinite; }
+  .mars-anim  { animation:spin-ccw 25s linear infinite,pulse-red 4s ease-in-out infinite; }
+</style>
+</head>
+<body class="text-white">
+
+<!-- 📺 Facebook Video -->
+<div class="relative w-screen aspect-video">
+  <iframe class="absolute top-0 left-0 w-full h-full"
+    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1875899790008148%2F&show_text=false&width=560&t=0"
+    style="border:none;overflow:hidden" frameborder="0"
+    allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+  </iframe>
+</div>
+
+<!-- 🖼️ Default Ad Overlay -->
+<div id="ad-overlay" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10 hidden">
+  <div class="relative p-2 bg-black rounded-xl shadow-lg">
+    <a id="ad-link" href="#" target="_blank">
+      <img id="ad-image" src="Ad/ad1.jpg" alt="Advertisement" class="max-w-[150px] rounded-lg shadow-xl">
+    </a>
+    <button id="close-ad" class="absolute -top-3 -right-3 bg-gray-800 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg">✕</button>
+  </div>
+</div>
+
+<!-- 🟢 Sara Duterte Support Pop-up -->
+<div id="sara-ad" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 z-20 hidden">
+  <div class="relative bg-green-700 rounded-xl shadow-xl p-6 max-w-sm text-center animate-slideUp">
+    <img src="Ad/sara.jpg" alt="Sara Duterte" class="w-32 h-32 rounded-full mx-auto mb-3 border-4 border-white shadow-lg">
+    <h2 id="sara-slogan" class="text-xl font-bold mb-4 transition-opacity duration-700 opacity-100">
+      One Philippines, One Future, One Sara.
+    </h2>
+    <a href="https://www.facebook.com/indaysaraduterteofficial" target="_blank"
+       class="inline-block bg-white text-green-700 font-semibold px-4 py-2 rounded-full shadow hover:bg-gray-100">
+      Learn More
+    </a>
+    <button id="closeSaraAd" class="absolute -top-3 -right-3 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg">
+      ✕
+    </button>
+  </div>
+</div>
+
+<!-- 🔎 Header -->
+<div class="flex flex-col items-center mb-4 mt-2">
+  <div class="flex items-center gap-3">
+    <img src="assets/icons/search.png" alt="Search Logo" class="h-12 opacity-80" />
+    <img src="assets/icons/NEST_SEARCH.png" alt="Nest Search Logo" class="nest-logo" />
+    <span id="weather" class="text-lg">☁️ Loading...</span>
+  </div>
+</div>
+
+<!-- Search Bar -->
+<div class="relative w-full max-w-2xl mb-2">
+  <input type="text" placeholder="Search..."
+    class="w-full p-3 pl-12 pr-12 rounded-full bg-gray-700 text-white focus:outline-none shadow-md" />
+</div>
+
+<!-- Marquee -->
+<div class="w-full overflow-hidden mb-6">
+  <p class="text-[10px] sm:text-sm text-gray-300 whitespace-nowrap animate-marquee">
+    Nested Educational Entertainment Ecommerce Search Topology
+  </p>
+</div>
+
+<!-- 🗂️ Apps Carousel -->
+<div class="w-full max-w-2xl">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center">
+            <a href="https://surigaodelsur.gov.ph/" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/johnny.png" alt="Gov Johnny">
+              </div>
+              <p class="mt-2 text-xs">Gov Johnny</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="https://cantilan.gov.ph/" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/digoy.png" alt="Mayor Digoy">
+              </div>
+              <p class="mt-2 text-xs">Mayor Digoy</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="https://www.facebook.com/profile.php?id=100068345255709" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/cantilan.png" alt="Cantilan LGU">
+              </div>
+              <p class="mt-2 text-xs">Cantilan LGU</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="cantilan.php" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/wecantilan.png" alt="We Cantilan">
+              </div>
+              <p class="mt-2 text-xs">We❤Cantilan</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="home.php" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/GRADIO.png" alt="Gradio FM">
+              </div>
+              <p class="mt-2 text-xs">Gradio FM</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="smileflex/index.html" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/smileflex.png" alt="Smileflex">
+              </div>
+              <p class="mt-2 text-xs">Smileflex</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center">
+            <a href="#" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/musify.png" alt="Musify">
+              </div>
+              <p class="mt-2 text-xs">Musify</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="#" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/gamehub.png" alt="Game Hub">
+              </div>
+              <p class="mt-2 text-xs">Game Hub</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center">
+            <a href="#" target="_blank" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+                <img src="assets/icons/nestapp.png" alt="Nest App">
+              </div>
+              <p class="mt-2 text-xs">Nest App</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination mt-2"></div>
+  </div>
+</div>
+
+<!-- 🎙️ Audio Player -->
+<div class="flex justify-center mt-6 mb-6">
+  <div class="w-full max-w-4xl bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-lg p-4">
+    <div class="flex justify-between items-center mb-2">
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 bg-red-600 text-white rounded-md font-bold animate-pulse">🎙️ ON AIR</span>
+        <span class="text-xs">Streaming LIVE Gradio FM</span>
+      </div>
+      <div class="text-xs flex items-center gap-1">⏰ <span id="liveClock"></span></div>
+    </div>
+
+    <div class="overflow-hidden whitespace-nowrap bg-gray-700 text-white text-sm p-1 rounded mb-3">
+      <span class="animate-marquee">
+        🔴 LIVE — Now Streaming from Gradio Cantilan — dj Blayn Castillo 🎶
+      </span>
+    </div>
+
+    <!-- Removed muted so audio can play with sound -->
+    <audio id="audioPlayer" controls autoplay class="w-full"></audio>
+
+    <div class="flex items-center justify-between mb-3">
+      <div id="timeDisplay" class="text-lg font-mono">00:00</div>
+      <div class="flex gap-1">
+        <div class="w-1 bg-blue-400 h-4 animate-bounce"></div>
+        <div class="w-1 bg-blue-400 h-6 animate-bounce delay-75"></div>
+        <div class="w-1 bg-blue-400 h-3 animate-bounce delay-150"></div>
+        <div class="w-1 bg-blue-400 h-5 animate-bounce delay-200"></div>
+      </div>
+    </div>
+    <div class="mt-2 flex items-center gap-2">
+      <span class="text-sm">🔊</span>
+      <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="1" class="w-full accent-blue-500">
+    </div>
+  </div>
+</div>
+
+
+<!-- 🌍 Footer Navigation -->
+<div class="flex justify-center items-center mb-6">
+  <div class="relative flex items-center justify-between w-full max-w-4xl px-6 bg-[#1c1c1c] rounded-full shadow-lg">
+    <img src="assets/icons/earth.png" alt="Earth" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform ml-4 earth-anim" onclick="window.location.href='https://www.google.com'">
+    <img id="floatingBtn" src="assets/icons/floating.png" alt="Apps" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer transition-transform -mt-8 sm:-mt-10 z-10" onclick="openAppsMenu()">
+    <img src="assets/icons/mars.png" alt="Mars" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform mr-4 mars-anim" onclick="window.location.href='mars_intranet.html'">
+  </div>
+</div>
+
+<!-- Apps Menu Modal -->
+<div id="appsMenu" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50 flex items-center justify-center">
+  <div class="bg-white rounded-xl p-6 grid grid-cols-3 gap-4 max-w-md">
+    <button class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">App 1</button>
+    <button class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">App 2</button>
+    <button class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">App 3</button>
+    <button onclick="closeAppsMenu()" class="col-span-3 bg-red-500 text-white py-2 rounded-lg">Close</button>
+  </div>
+</div>
+
+  <!-- 📌 Scripts go here -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+  // 🔄 Swiper
+  const swiper = new Swiper('.swiper',{
+    loop:false,
+    pagination:{el:'.swiper-pagination',clickable:true}
+  });
+
+  // 📢 Ad overlay
+  const adOverlay=document.getElementById('ad-overlay'),
+        adImage=document.getElementById('ad-image'),
+        adLink=document.getElementById('ad-link');
+  function showAd(img,link){
+    adImage.src=img||'Ad/ad1.jpg';
+    adLink.href=link||'#';
+    adOverlay.classList.remove('hidden');
+    setTimeout(hideAd,5000);
+  }
+  function hideAd(){
+    adOverlay.classList.add('hidden');
+    adImage.src='Ad/ad2.jpg';
+    adLink.href='#';
+  }
+  setTimeout(()=>{ showAd('Ad/ad1.jpg','https://example.com'); },60000);
+
+  // 💚 Sara slogans
+  const slogans=["One Philippines, One Future, One Sara.","Inday ng Bayan."];
+  let sloganIndex=0;
+  const sloganEl=document.getElementById("sara-slogan"),
+        saraPopup=document.getElementById("sara-ad");
+  setTimeout(()=>{
+    saraPopup.classList.remove("hidden");
+    setTimeout(()=>{ saraPopup.classList.add("hidden"); },5000);
+    setInterval(()=>{
+      sloganEl.classList.add("opacity-0");
+      setTimeout(()=>{
+        sloganIndex=(sloganIndex+1)%slogans.length;
+        sloganEl.textContent=slogans[sloganIndex];
+        sloganEl.classList.remove("opacity-0");
+      },700);
+    },5000);
+  },40000);
+  document.getElementById("closeSaraAd").onclick=()=>{ saraPopup.classList.add("hidden"); };
+
+  // ⛅ Weather
+  const weatherSpan=document.getElementById('weather');
+  async function fetchWeather(){
+    try{
+      const res=await fetch("https://api.open-meteo.com/v1/forecast?latitude=9.33&longitude=125.97&current_weather=true");
+      const data=await res.json(),
+            temp=Math.round(data.current_weather.temperature),
+            code=data.current_weather.weathercode;
+      weatherSpan.innerHTML=`${getIcon(code)} ${temp}°C`;
+    }catch{ weatherSpan.textContent='🌡️ N/A'; }
+  }
+  function getIcon(c){
+    if(c===0)return'☀️'; if([1,2].includes(c))return'⛅'; if(c===3)return'☁️';
+    if([45,48].includes(c))return'🌫️'; if([51,53,55,56,57].includes(c))return'🌦️';
+    if([61,63,65,66,67].includes(c))return'🌧️'; if([71,73,75,77].includes(c))return'❄️';
+    if([80,81,82].includes(c))return'🌧️'; if(c===95)return'⛈️';
+    return'🌡️';
+  }
+  fetchWeather(); setInterval(fetchWeather,600000);
+
+  // 🎶 Playlist + Autoplay Unlock
+  const playlist=[
+    "http://192.168.0.111/dashboard/music/dj.mp3",
+    "http://192.168.0.111/dashboard/music/song2.mp3",
+    "http://192.168.0.111/dashboard/music/song3.mp3"
+  ];
+  let current=0;
+  const audio=document.getElementById("audioPlayer");
+  audio.src=playlist[current];
+
+  // Auto-next
+  audio.addEventListener("ended",()=>{
+    current=(current+1)%playlist.length;
+    audio.src=playlist[current];
+    audio.play();
+  });
+
+  // 🔓 Unlock autoplay on first click anywhere
+  document.body.addEventListener("click",()=>{
+    if(audio.muted){ audio.muted=false; audio.play(); }
+  },{once:true});
+
+  // ⏰ Live Clock
+  const liveClock=document.getElementById("liveClock");
+  function updateLiveClock(){
+    const now=new Date();
+    const h=String(now.getHours()).padStart(2,'0');
+    const m=String(now.getMinutes()).padStart(2,'0');
+    liveClock.textContent=`${h}:${m}`;
+  }
+  setInterval(updateLiveClock,1000); updateLiveClock();
+
+  // 🎼 Playback Timer
+  const timeDisplay=document.getElementById("timeDisplay");
+  audio.addEventListener("timeupdate",()=>{
+    const m=Math.floor(audio.currentTime/60),
+          s=Math.floor(audio.currentTime%60);
+    timeDisplay.textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  });
+
+  // 🔊 Volume
+  document.getElementById("volumeControl")
+    .addEventListener("input",e=>{ audio.volume=e.target.value; });
+
+  // 📱 Apps Menu
+  function openAppsMenu(){ document.getElementById("appsMenu").classList.remove("hidden"); }
+  function closeAppsMenu(){ document.getElementById("appsMenu").classList.add("hidden"); }
+  </script>
+</body>
+</html>
+
+</script>
+</body>
+</html>
