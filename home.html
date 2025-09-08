@@ -323,6 +323,12 @@ welcomePopup.addEventListener("click", () => {
   introVideo.muted = false;
   introVideo.play();
 
+  // ✅ Trigger cache now
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ action: "cacheVideos" });
+  }
+
+
   // Switch video when one ends
   introVideo.addEventListener("ended", () => {
     nextVideoBtn.classList.remove("hidden");
@@ -345,6 +351,13 @@ nextVideoBtn.addEventListener("click", () => {
   introVideo.muted = false; // ensure sound is ON
   playNextVideo();
 });
+
+  // Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(() => {
+    console.log('✅ Service Worker registered');
+  });
+}
 
 // 🔄 Swiper
 const swiper = new Swiper('.swiper', {
