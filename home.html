@@ -29,60 +29,23 @@
   .mars-anim  { animation:spin-ccw 25s linear infinite,pulse-red 4s ease-in-out infinite; }
 
   /* 📱 Base (Mobile-first styles) */
-  .search-bar {
-    width: 100%;
-    max-width: 20rem; /* mobile default */
-    margin: 0 auto;
-  }
-
-  .apps-section {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .apps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 per row mobile */
-    gap: 1.5rem;
-    justify-items: center;
-  }
+  .search-bar { width: 100%; max-width: 20rem; margin: 0 auto; }
+  .apps-section { width: 100%; margin: 0 auto; }
+  .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; justify-items: center; }
 
   /* 💻 Desktop Enhancements */
   @media (min-width: 1024px) {
-    /* Longer centered search bar */
-    .search-bar {
-      max-width: 900px !important;
-    }
-
-    /* Center whole apps section */
-    .apps-section {
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 2rem 0;
-    }
-
-    /* Apps grid with more spacing */
-    .apps-grid {
-      grid-template-columns: repeat(6, 1fr); /* 6 per row in desktop */
-      gap: 2.5rem;
-    }
-
-    /* Bigger icons for desktop */
-    .app-icon img {
-      width: 90px;
-      height: 90px;
-    }
-
-    /* Larger text */
-    .app-label {
-      font-size: 1rem;
-    }
+    .search-bar { max-width: 900px !important; }
+    .apps-section { max-width: 1100px; margin-left: auto; margin-right: auto; padding: 2rem 0; }
+    .apps-grid { grid-template-columns: repeat(6, 1fr); gap: 2.5rem; }
+    .app-icon img { width: 90px; height: 90px; }
+    .app-label { font-size: 1rem; }
   }
 </style>
 </head>
 <body class="text-white">
-  <!-- 👋 Welcome Logo Popup -->
+
+<!-- 👋 Welcome Logo Popup -->
 <div id="welcomePopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
   <div class="text-center animate-slideUp">
     <img src="assets/icons/GRADIO.png" alt="Welcome Logo"
@@ -94,15 +57,24 @@
   </div>
 </div>
 
+<!-- 📰 Ad Overlay -->
+<div id="ad-overlay" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-white text-black animate-slideUp">
+    <button id="close-ad" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">✖</button>
+    <a id="ad-link" href="#" target="_blank">
+      <img id="ad-image" src="" alt="Ad Image" class="w-full rounded-lg mb-4">
+    </a>
+    <h2 id="ad-title" class="text-lg font-bold mb-2"></h2>
+    <p id="ad-text" class="text-sm mb-4"></p>
+    <a id="ad-btn" href="#" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full shadow">
+      Learn More
+    </a>
+  </div>
+</div>
+
 <!-- 🎥 Local Video Player -->
 <div class="relative w-full max-w-4xl mx-auto aspect-video mb-8">
-  <video 
-  id="introVideo"
-  class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-  autoplay
-  muted
-  loop
->
+  <video id="introVideo" class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" autoplay muted loop>
     <source src="player/VPsara.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -133,6 +105,7 @@
 <!-- 🗂️ Apps Section -->
 <div class="apps-section">
   <div class="apps-grid">
+    <!-- app icons (unchanged) -->
     <div class="flex flex-col items-center text-center">
       <a href="https://surigaodelsur.gov.ph/" target="_blank" class="flex flex-col items-center">
         <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
@@ -184,30 +157,6 @@
   </div>
 </div>
 
-       <!-- 📰 Ad Overlay -->
-<div id="ad-overlay" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-white text-black animate-slideUp">
-    <button id="close-ad" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">✖</button>
-    <a id="ad-link" href="#" target="_blank">
-      <img id="ad-image" src="" alt="Ad Image" class="w-full rounded-lg mb-4">
-    </a>
-    <h2 id="ad-title" class="text-lg font-bold mb-2"></h2>
-    <p id="ad-text" class="text-sm mb-4"></p>
-    <a id="ad-btn" href="#" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full shadow">
-      Learn More
-    </a>
-  </div>
-</div>
-
-     <!-- 💚 Sara Popup -->
-<div id="sara-ad" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-green-600 text-white animate-slideUp">
-    <button id="closeSaraAd" class="absolute top-2 right-2 text-white hover:text-red-300">✖</button>
-    <img src="assets/POPUP/VP/sara.png" alt="Sara Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
-    <h2 id="sara-slogan" class="text-lg font-bold transition-opacity">One Philippines, One Future, One Sara.</h2>
-  </div>
-</div>
-
 <!-- 🌍 Footer Navigation -->
 <div class="flex justify-center items-center mb-6 mt-12">
   <div class="relative flex items-center justify-between w-full max-w-4xl px-6 bg-[#1c1c1c] rounded-full shadow-lg">
@@ -219,19 +168,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-   // 🎵 Welcome Popup Trigger for Audio + Video Sound
 const welcomePopup = document.getElementById("welcomePopup");
 const introVideo = document.getElementById("introVideo");
 
+// 🎵 Welcome Popup Trigger
 welcomePopup.addEventListener("click", () => {
-  welcomePopup.classList.add("hidden");   // Hide popup
-
-  // enable video sound
+  welcomePopup.classList.add("hidden");
   introVideo.muted = false;
   introVideo.play();
-
-  // trigger audio autoplay too
-  if (audio.paused) { audio.play(); }
+  // Start ads rotation after welcome
+  setInterval(showAd, 60000);
+  // Show first ad immediately
+  showAd();
 });
 
 // 🔄 Swiper
@@ -250,7 +198,7 @@ const adLink = document.getElementById('ad-link');
 
 const ads = [
   {
-    img: "Ad/ad1.jpg",
+    img: "assets/POPUP/EYEBERRY/wangod.jpg",
     title: "Eyeberry Gold",
     text: "Nourish your eyes with Eyeberry Gold — packed with antioxidants to support vision and protect from digital strain.",
     btn: "Buy Now",
@@ -258,17 +206,17 @@ const ads = [
     color: "yellow"
   },
   {
-    img: "Ad/ad2.jpg",
-    title: "Vision Plus",
-    text: "Support your eye health daily with Vision Plus capsules. Keep your eyes refreshed and protected.",
+    img: "assets/POPUP/VP/sara.png",
+    title: " One Philippines, One Future, One Sara.",
+    text: "We Support Sara",
     btn: "Learn More",
-    btnLink: "https://example.com/vision-plus",
+    btnLink: "https://www.ovp.gov.ph/",
     color: "green"
   },
   {
-    img: "Ad/ad3.jpg",
-    title: "EyeCare Pro",
-    text: "EyeCare Pro formula provides antioxidants and nutrients to prevent digital eye strain.",
+    img: "assets/POPUP/EYEBERRY/eyeberry02.jpg",
+    title: "Eyeberry",
+    text: "Packed with antioxidants to support vision and protect from digital strain.",
     btn: "Shop Now",
     btnLink: "https://example.com/eyecare-pro",
     color: "blue"
@@ -294,23 +242,6 @@ function showAd() {
   adBtn.href = ad.btnLink;
   adLink.href = ad.btnLink;
 
-  // Background & button colors
-  const bgClasses = {
-    yellow: "bg-yellow-100 text-yellow-800 border-yellow-500 hover:bg-yellow-600",
-    green: "bg-green-100 text-green-800 border-green-500 hover:bg-green-600",
-    blue: "bg-blue-100 text-blue-800 border-blue-500 hover:bg-blue-600",
-    purple: "bg-purple-100 text-purple-800 border-purple-500 hover:bg-purple-600"
-  };
-  const btnClasses = {
-    yellow: "bg-yellow-500 text-white hover:bg-yellow-600",
-    green: "bg-green-500 text-white hover:bg-green-600",
-    blue: "bg-blue-500 text-white hover:bg-blue-600",
-    purple: "bg-purple-500 text-white hover:bg-purple-600"
-  };
-
-  adOverlay.firstElementChild.className = `relative rounded-xl shadow-xl p-6 max-w-sm text-center animate-slideUp ${bgClasses[ad.color]}`;
-  adBtn.className = `inline-block font-bold px-4 py-2 rounded-full shadow ${btnClasses[ad.color]}`;
-
   adOverlay.classList.remove("hidden");
   setTimeout(hideAd, 6000);
 }
@@ -320,36 +251,7 @@ function hideAd() {
   currentAd = (currentAd + 1) % ads.length;
 }
 
-setInterval(showAd, 60000);
 document.getElementById("close-ad").onclick = hideAd;
-
-// 💚 Sara popup
-const slogans = ["One Philippines, One Future, One Sara.", "Inday ng Bayan."];
-let sloganIndex = 0;
-const sloganEl = document.getElementById("sara-slogan"),
-      saraPopup = document.getElementById("sara-ad");
-let saraInterval;
-
-function startSaraPopup() {
-  saraPopup.classList.remove("hidden");
-  setTimeout(() => { saraPopup.classList.add("hidden"); }, 5000);
-
-  saraInterval = setInterval(() => {
-    sloganEl.classList.add("opacity-0");
-    setTimeout(() => {
-      sloganIndex = (sloganIndex + 1) % slogans.length;
-      sloganEl.textContent = slogans[sloganIndex];
-      sloganEl.classList.remove("opacity-0");
-    }, 700);
-  }, 5000);
-}
-
-setTimeout(startSaraPopup, 40000);
-
-document.getElementById("closeSaraAd").onclick = () => {
-  saraPopup.classList.add("hidden");
-  clearInterval(saraInterval);
-};
 
 // ⛅ Weather
 const weatherSpan = document.getElementById('weather');
@@ -379,7 +281,6 @@ function getIcon(c) {
 fetchWeather();
 setInterval(fetchWeather, 600000);
 
-
 // ⏰ Live Clock
 const liveClock = document.getElementById("liveClock");
 function updateLiveClock() {
@@ -390,8 +291,6 @@ function updateLiveClock() {
 }
 setInterval(updateLiveClock,1000);
 updateLiveClock();
-
-
 
 // 📱 Apps Menu
 function openAppsMenu(){ document.getElementById("appsMenu").classList.remove("hidden"); }
