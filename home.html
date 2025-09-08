@@ -27,6 +27,58 @@
   @keyframes pulse-red  { 0%,100%{filter:drop-shadow(0 0 8px #ef4444);} 50%{filter:drop-shadow(0 0 20px #f87171);} }
   .earth-anim { animation:spin-cw 20s linear infinite,pulse-blue 3s ease-in-out infinite; }
   .mars-anim  { animation:spin-ccw 25s linear infinite,pulse-red 4s ease-in-out infinite; }
+
+  /* 📱 Base (Mobile-first styles) */
+  .search-bar {
+    width: 100%;
+    max-width: 20rem; /* mobile default */
+    margin: 0 auto;
+  }
+
+  .apps-section {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row mobile */
+    gap: 1.5rem;
+    justify-items: center;
+  }
+
+  /* 💻 Desktop Enhancements */
+  @media (min-width: 1024px) {
+    /* Longer centered search bar */
+    .search-bar {
+      max-width: 900px !important;
+    }
+
+    /* Center whole apps section */
+    .apps-section {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2rem 0;
+    }
+
+    /* Apps grid with more spacing */
+    .apps-grid {
+      grid-template-columns: repeat(6, 1fr); /* 6 per row in desktop */
+      gap: 2.5rem;
+    }
+
+    /* Bigger icons for desktop */
+    .app-icon img {
+      width: 90px;
+      height: 90px;
+    }
+
+    /* Larger text */
+    .app-label {
+      font-size: 1rem;
+    }
+  }
 </style>
 </head>
 <body class="text-white">
@@ -42,47 +94,18 @@
   </div>
 </div>
 
-<!-- 📺 Facebook Video -->
-<div class="relative w-screen aspect-video">
-  <iframe class="absolute top-0 left-0 w-full h-full"
-    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1875899790008148%2F&show_text=false&width=560&t=0"
-    style="border:none;overflow:hidden" frameborder="0"
-    allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-  </iframe>
-</div>
-
-<!-- 🖼️ Marketing Ad Overlay -->
-<div id="ad-overlay" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 z-20 hidden">
-  <div class="relative bg-yellow-100 rounded-xl shadow-xl p-6 max-w-sm text-center animate-slideUp">
-    <a id="ad-link" href="#" target="_blank">
-      <img id="ad-image" src="Ad/ad1.jpg" alt="Ad Image"
-           class="w-32 h-32 rounded-full mx-auto mb-3 border-4 border-yellow-500 shadow-lg">
-    </a>
-    <h2 id="ad-title" class="text-xl font-extrabold text-yellow-800 mb-2">Eyeberry Gold</h2>
-    <p id="ad-text" class="text-sm text-gray-800 mb-4">Marketing text goes here.</p>
-    <a id="ad-btn" href="#" target="_blank"
-       class="inline-block bg-yellow-500 text-white font-bold px-4 py-2 rounded-full shadow hover:bg-yellow-600">
-      Buy Now
-    </a>
-    <button id="close-ad" class="absolute -top-3 -right-3 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg">✕</button>
-  </div>
-</div>
-
-<!-- 🟢 Sara Duterte Support Pop-up -->
-<div id="sara-ad" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 z-30 hidden">
-  <div class="relative bg-green-700 rounded-xl shadow-xl p-6 max-w-sm text-center animate-slideUp">
-    <img src="Ad/sara.jpg" alt="Sara Duterte" class="w-32 h-32 rounded-full mx-auto mb-3 border-4 border-white shadow-lg">
-    <h2 id="sara-slogan" class="text-xl font-bold mb-4 transition-opacity duration-700 opacity-100">
-      One Philippines, One Future, One Sara.
-    </h2>
-    <a href="https://www.facebook.com/indaysaraduterteofficial" target="_blank"
-       class="inline-block bg-white text-green-700 font-semibold px-4 py-2 rounded-full shadow hover:bg-gray-100">
-      Learn More
-    </a>
-    <button id="closeSaraAd" class="absolute -top-3 -right-3 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg">
-      ✕
-    </button>
-  </div>
+<!-- 🎥 Local Video Player -->
+<div class="relative w-full max-w-4xl mx-auto aspect-video mb-8">
+  <video 
+  id="introVideo"
+  class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+  autoplay
+  muted
+  loop
+>
+    <source src="player/VPsara.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 
 <!-- 🔎 Header -->
@@ -95,7 +118,7 @@
 </div>
 
 <!-- Search Bar -->
-<div class="relative w-full max-w-2xl mb-2">
+<div class="relative search-bar mb-2">
   <input type="text" placeholder="Search..."
     class="w-full p-3 pl-12 pr-12 rounded-full bg-gray-700 text-white focus:outline-none shadow-md" />
 </div>
@@ -107,213 +130,86 @@
   </p>
 </div>
 
-<!-- 🗂️ Apps Carousel -->
-<div class="w-full max-w-2xl">
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <!-- Slide 1 -->
-      <div class="swiper-slide">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center text-center">
-            <a href="https://surigaodelsur.gov.ph/" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/johnny.png" alt="Gov Johnny">
-              </div>
-              <p class="mt-2 text-xs">Gov Johnny</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="https://cantilan.gov.ph/" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/digoy.png" alt="Mayor Digoy">
-              </div>
-              <p class="mt-2 text-xs">Mayor Digoy</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="https://www.facebook.com/profile.php?id=100068345255709" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/cantilan.png" alt="Cantilan LGU">
-              </div>
-              <p class="mt-2 text-xs">Cantilan LGU</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="cantilan.html" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/wecantilan.png" alt="We Cantilan">
-              </div>
-              <p class="mt-2 text-xs">We❤Cantilan</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="home.html" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/GRADIO.png" alt="Gradio FM">
-              </div>
-              <p class="mt-2 text-xs">Gradio FM</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="smileflex.html" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/smileflex.png" alt="Smileflex">
-              </div>
-              <p class="mt-2 text-xs">Smileflex</p>
-            </a>
-          </div>
+<!-- 🗂️ Apps Section -->
+<div class="apps-section">
+  <div class="apps-grid">
+    <div class="flex flex-col items-center text-center">
+      <a href="https://surigaodelsur.gov.ph/" target="_blank" class="flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+          <img src="assets/icons/johnny.png" alt="Gov Johnny">
         </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="swiper-slide">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/musify.png" alt="Musify">
-              </div>
-              <p class="mt-2 text-xs">Musify</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/gamehub.png" alt="Game Hub">
-              </div>
-              <p class="mt-2 text-xs">Game Hub</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/orangeware.png" alt="OrangeWare">
-              </div>
-              <p class="mt-2 text-xs">OrangeWare</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/wikipedia.png" alt="Wikipedia">
-              </div>
-              <p class="mt-2 text-xs">Wikipedia</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/ebooks.png" alt="eBooks">
-              </div>
-              <p class="mt-2 text-xs">eBooks</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/news.png" alt="News Daily">
-              </div>
-              <p class="mt-2 text-xs">News Daily</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="swiper-slide">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/eatbulaga.png" alt="Eat Bulaga">
-              </div>
-              <p class="mt-2 text-xs">Eat Bulaga</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/showtime.jpg" alt="Showtime">
-              </div>
-              <p class="mt-2 text-xs">Showtime</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/wetube.png" alt="WeTube">
-              </div>
-              <p class="mt-2 text-xs">WeTube</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/videoke.png" alt="Videoke Star">
-              </div>
-              <p class="mt-2 text-xs">Videoke Star</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/bible.jpg" alt="Bible">
-              </div>
-              <p class="mt-2 text-xs">Bible</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/google.jpg" alt="Google">
-              </div>
-              <p class="mt-2 text-xs">Google</p>
-            </a>
-          </div>
-        </div>
-      </div>
+        <p class="mt-2 text-xs app-label">Gov Johnny</p>
+      </a>
     </div>
-    <div class="swiper-pagination mt-2"></div>
+    <div class="flex flex-col items-center text-center">
+      <a href="https://cantilan.gov.ph/" target="_blank" class="flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+          <img src="assets/icons/digoy.png" alt="Mayor Digoy">
+        </div>
+        <p class="mt-2 text-xs app-label">Mayor Digoy</p>
+      </a>
+    </div>
+    <div class="flex flex-col items-center text-center">
+      <a href="https://www.facebook.com/profile.php?id=100068345255709" target="_blank" class="flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+          <img src="assets/icons/cantilan.png" alt="Cantilan LGU">
+        </div>
+        <p class="mt-2 text-xs app-label">Cantilan LGU</p>
+      </a>
+    </div>
+    <div class="flex flex-col items-center text-center">
+      <a href="cantilan.html" target="_blank" class="flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+          <img src="assets/icons/wecantilan.png" alt="We Cantilan">
+        </div>
+        <p class="mt-2 text-xs app-label">We❤Cantilan</p>
+      </a>
+    </div>
+    <div class="flex flex-col items-center text-center">
+      <a href="home.html" target="_blank" class="flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+          <img src="assets/icons/GRADIO.png" alt="Gradio FM">
+        </div>
+        <p class="mt-2 text-xs app-label">Gradio FM</p>
+      </a>
+    </div>
+    <div class="flex flex-col items-center text-center">
+      <a href="smileflex.html" target="_blank" class="flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
+          <img src="assets/icons/smileflex.png" alt="Smileflex">
+        </div>
+        <p class="mt-2 text-xs app-label">Smileflex</p>
+      </a>
+    </div>
   </div>
 </div>
 
-<!-- 🎙️ Audio Player -->
-<div class="flex justify-center mt-6 mb-6">
-  <div class="w-full max-w-4xl bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-lg p-4">
-    <div class="flex justify-between items-center mb-2">
-      <div class="flex items-center gap-2">
-        <span class="px-3 py-1 bg-red-600 text-white rounded-md font-bold animate-pulse">🎙️ ON AIR</span>
-        <span class="text-xs">Streaming LIVE Gradio FM</span>
-      </div>
-      <div class="text-xs flex items-center gap-1">⏰ <span id="liveClock"></span></div>
-    </div>
+       <!-- 📰 Ad Overlay -->
+<div id="ad-overlay" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-white text-black animate-slideUp">
+    <button id="close-ad" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">✖</button>
+    <a id="ad-link" href="#" target="_blank">
+      <img id="ad-image" src="" alt="Ad Image" class="w-full rounded-lg mb-4">
+    </a>
+    <h2 id="ad-title" class="text-lg font-bold mb-2"></h2>
+    <p id="ad-text" class="text-sm mb-4"></p>
+    <a id="ad-btn" href="#" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full shadow">
+      Learn More
+    </a>
+  </div>
+</div>
 
-    <div class="overflow-hidden whitespace-nowrap bg-gray-700 text-white text-sm p-1 rounded mb-3">
-      <span class="animate-marquee">
-        🔴 LIVE — Now Streaming from Gradio Cantilan — DJ Blayne Duero Castillo 🎶
-      </span>
-    </div>
-
-    <audio id="audioPlayer" controls autoplay class="w-full"></audio>
-
-    <div class="flex items-center justify-between mb-3">
-      <div id="timeDisplay" class="text-lg font-mono">00:00</div>
-      <div class="flex gap-1">
-        <div class="w-1 bg-blue-400 h-4 animate-bounce"></div>
-        <div class="w-1 bg-blue-400 h-6 animate-bounce delay-75"></div>
-        <div class="w-1 bg-blue-400 h-3 animate-bounce delay-150"></div>
-        <div class="w-1 bg-blue-400 h-5 animate-bounce delay-200"></div>
-      </div>
-    </div>
-    <div class="mt-2 flex items-center gap-2">
-      <span class="text-sm">🔊</span>
-      <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="1" class="w-full accent-blue-500">
-    </div>
+     <!-- 💚 Sara Popup -->
+<div id="sara-ad" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-green-600 text-white animate-slideUp">
+    <button id="closeSaraAd" class="absolute top-2 right-2 text-white hover:text-red-300">✖</button>
+    <img src="assets/POPUP/VP/sara.png" alt="Sara Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
+    <h2 id="sara-slogan" class="text-lg font-bold transition-opacity">One Philippines, One Future, One Sara.</h2>
   </div>
 </div>
 
 <!-- 🌍 Footer Navigation -->
-<div class="flex justify-center items-center mb-6">
+<div class="flex justify-center items-center mb-6 mt-12">
   <div class="relative flex items-center justify-between w-full max-w-4xl px-6 bg-[#1c1c1c] rounded-full shadow-lg">
     <img src="assets/icons/earth.png" alt="Earth" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform ml-4 earth-anim" onclick="window.location.href='https://www.google.com'">
     <img id="floatingBtn" src="assets/icons/floating.png" alt="Apps" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer transition-transform -mt-8 sm:-mt-10 z-10" onclick="openAppsMenu()">
@@ -321,24 +217,21 @@
   </div>
 </div>
 
-<!-- Apps Menu Modal -->
-<div id="appsMenu" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50 flex items-center justify-center">
-  <div class="bg-white rounded-xl p-6 grid grid-cols-3 gap-4 max-w-md">
-    <button class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">App 1</button>
-    <button class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">App 2</button>
-    <button class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">App 3</button>
-    <button onclick="closeAppsMenu()" class="col-span-3 bg-red-500 text-white py-2 rounded-lg">Close</button>
-  </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-   // 🎵 Welcome Popup Trigger for Audio
+   // 🎵 Welcome Popup Trigger for Audio + Video Sound
 const welcomePopup = document.getElementById("welcomePopup");
+const introVideo = document.getElementById("introVideo");
 
 welcomePopup.addEventListener("click", () => {
   welcomePopup.classList.add("hidden");   // Hide popup
-  if (audio.paused) { audio.play(); }     // Trigger audio autoplay
+
+  // enable video sound
+  introVideo.muted = false;
+  introVideo.play();
+
+  // trigger audio autoplay too
+  if (audio.paused) { audio.play(); }
 });
 
 // 🔄 Swiper
@@ -486,21 +379,6 @@ function getIcon(c) {
 fetchWeather();
 setInterval(fetchWeather, 600000);
 
-// 🎶 Playlist + Autoplay Unlock
-const playlist = ["music/dj.mp3","music/song2.mp3","music/song3.mp3"];
-let current = 0;
-const audio = document.getElementById("audioPlayer");
-audio.src = playlist[current];
-
-audio.addEventListener("ended", () => {
-  current = (current + 1) % playlist.length;
-  audio.src = playlist[current];
-  audio.play();
-});
-
-document.body.addEventListener("click", () => {
-  if(audio.paused) audio.play();
-}, { once:true });
 
 // ⏰ Live Clock
 const liveClock = document.getElementById("liveClock");
@@ -513,22 +391,11 @@ function updateLiveClock() {
 setInterval(updateLiveClock,1000);
 updateLiveClock();
 
-// 🎼 Playback Timer
-const timeDisplay = document.getElementById("timeDisplay");
-audio.addEventListener("timeupdate", () => {
-  const m = Math.floor(audio.currentTime/60);
-  const s = Math.floor(audio.currentTime%60);
-  timeDisplay.textContent = `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-});
 
-// 🔊 Volume
-document.getElementById("volumeControl")
-  .addEventListener("input", e => { audio.volume = e.target.value; });
 
 // 📱 Apps Menu
 function openAppsMenu(){ document.getElementById("appsMenu").classList.remove("hidden"); }
 function closeAppsMenu(){ document.getElementById("appsMenu").classList.add("hidden"); }
 </script>
-
 </body>
 </html>
