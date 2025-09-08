@@ -1,491 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GRADIO PORTAL</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<style>
-   /* 🚫 Block desktop view */
-@media (min-width: 1024px) {
-  #desktop-block { display: flex !important; }
-  body > *:not(#desktop-block) { display: none !important; }
-}
-  
-  body { background-color:#000; color:#fff; }
-
-  .app-icon img { width:64px; height:64px; border-radius:50%; }
-  .swiper-button-next, .swiper-button-prev { display:none!important; }
-
-  /* Marquee */
-  @keyframes marquee { from{transform:translateX(100%);} to{transform:translateX(-100%);} }
-  .animate-marquee { display:inline-block; padding-left:100%; animation:marquee 12s linear infinite; will-change: transform; }
-
-  .nest-logo { height:28px; width:145px; object-fit:contain; }
-  @keyframes slideUp { from{transform:translateY(100%);opacity:0;} to{transform:translateY(0);opacity:1;} }
-  .animate-slideUp { animation:slideUp .8s ease-out forwards; }
-
-  /* Footer planets */
-  @keyframes spin-cw { from{transform:rotate(0);} to{transform:rotate(360deg);} }
-  @keyframes spin-ccw { from{transform:rotate(0);} to{transform:rotate(-360deg);} }
-  @keyframes pulse-blue { 0%,100%{filter:drop-shadow(0 0 8px #3b82f6);} 50%{filter:drop-shadow(0 0 20px #60a5fa);} }
-  @keyframes pulse-red  { 0%,100%{filter:drop-shadow(0 0 8px #ef4444);} 50%{filter:drop-shadow(0 0 20px #f87171);} }
-  .earth-anim { animation:spin-cw 20s linear infinite,pulse-blue 3s ease-in-out infinite; }
-  .mars-anim  { animation:spin-ccw 25s linear infinite,pulse-red 4s ease-in-out infinite; }
-
-  /* 📱 Base (Mobile-first styles) */
-  .search-bar { width: 100%; max-width: 20rem; margin: 0 auto; }
-  .apps-section { width: 100%; margin: 0 auto; }
-  .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; justify-items: center; }
-
-  /* 💻 Desktop Enhancements */
-  @media (min-width: 1024px) {
-    .search-bar { max-width: 900px !important; }
-    .apps-section { max-width: 1100px; margin-left: auto; margin-right: auto; padding: 2rem 0; }
-    .apps-grid { grid-template-columns: repeat(6, 1fr); gap: 2.5rem; }
-    .app-icon img { width: 90px; height: 90px; }
-    .app-label { font-size: 1rem; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Governor Johnny T. Pimentel</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #fff;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .content {
+            padding: 1rem;
+            flex: 1;
+        }
+        .content h2 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .content p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .support-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            .content h2 {
+                font-size: 1.3rem;
+            }
+            .support-btn {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
 </head>
-<body class="text-white">
-     <!-- 🚫 Desktop Block Message -->
-<div id="desktop-block" class="hidden fixed inset-0 bg-black text-white flex items-center justify-center text-center z-50">
-  <div>
-    <h1 class="text-3xl font-bold mb-4">📱 Mobile Only</h1>
-    <p class="text-lg">This portal is only available on mobile devices.<br>
-    Please use your phone to continue.</p>
-  </div>
-</div>
-
-<!-- 👋 Welcome Logo Popup -->
-<div id="welcomePopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
-  <div class="text-center animate-slideUp">
-    <img src="assets/icons/GRADIO.png" alt="Welcome Logo"
-         class="w-40 h-40 sm:w-56 sm:h-56 mx-auto rounded-full shadow-2xl ring-4 ring-yellow-400 animate-pulse">
-    <h1 class="text-2xl sm:text-3xl font-extrabold mt-4 text-yellow-300 drop-shadow-lg">
-      Welcome to Gradio Portal
-    </h1>
-    <p class="text-gray-300 text-sm mt-2">With DJ Blayne Duero Castillo ...</p>
-  </div>
-</div>
-
-<!-- 📰 Ad Overlay -->
-<div id="ad-overlay" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-white text-black animate-slideUp">
-    <button id="close-ad" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">✖</button>
-    <a id="ad-link" href="#" target="_blank">
-      <img id="ad-image" src="" alt="Ad Image" class="w-full rounded-lg mb-4">
-    </a>
-    <h2 id="ad-title" class="text-lg font-bold mb-2"></h2>
-    <p id="ad-text" class="text-sm mb-4"></p>
-    <a id="ad-btn" href="#" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full shadow">
-      Learn More
-    </a>
-  </div>
-</div>
-
-<!-- 🎥 Local Video Playlist -->
-<div class="relative w-full max-w-4xl mx-auto aspect-video mb-4">
-  <video id="introVideo" class="w-full h-full rounded-lg shadow-lg" autoplay muted>
-    <source id="videoSource" src="player/VPsara.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- ▶ Next Video overlay -->
-  <div id="nextVideoBtn" 
-       class="hidden absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 cursor-pointer">
-    <span class="text-yellow-400 font-bold text-2xl">▶ Next Video</span>
-  </div>
-</div>
-
-
-<!-- 🔎 Header -->
-<div class="flex flex-col items-center mb-4 mt-2">
-  <div class="flex items-center gap-3">
-    <img src="assets/icons/search.png" alt="Search Logo" class="h-12 opacity-80" />
-    <img src="assets/icons/NEST_SEARCH.png" alt="Nest Search Logo" class="nest-logo" />
-    <span id="weather" class="text-lg">☁️ Loading...</span>
-  </div>
-</div>
-
-<!-- Search Bar -->
-<div class="relative search-bar mb-2">
-  <input type="text" placeholder="Search..."
-    class="w-full p-3 pl-12 pr-12 rounded-full bg-gray-700 text-white focus:outline-none shadow-md" />
-</div>
-
-<!-- Marquee -->
-<div class="w-full overflow-hidden mb-6">
-  <p class="text-[15px] sm:text-sm text-gray-300 whitespace-nowrap animate-marquee">
-   “Don Jose Guardo showed us that technology can be driven by compassion, and through Gradio Smile Wifi, his legacy continues to empower and inspire.”
-  </p>
-</div>
-
-<!-- App Slider -->
-<div class="w-full max-w-2xl">
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      
-      <!-- Slide 1 -->
-      <div class="swiper-slide">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center text-center">
-            <a href="https://surigaodelsur.gov.ph/" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/johnny.png" alt="Gov Johnny">
-              </div>
-              <p class="mt-2 text-xs">Gov Johnny</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="https://cantilan.gov.ph/" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/digoy.png" alt="Mayor Digoy">
-              </div>
-              <p class="mt-2 text-xs">Mayor Digoy</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="https://www.facebook.com/profile.php?id=100068345255709" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/cantilan.png" alt="Cantilan LGU">
-              </div>
-              <p class="mt-2 text-xs">Cantilan LGU</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="cantilan.html" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/wecantilan.png" alt="We Cantilan">
-              </div>
-              <p class="mt-2 text-xs">We❤Cantilan</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="home.html" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/GRADIO.png" alt="Gradio FM">
-              </div>
-              <p class="mt-2 text-xs">Gradio FM</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="smileflex.html" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/smileflex.png" alt="Smileflex">
-              </div>
-              <p class="mt-2 text-xs">Smileflex</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="swiper-slide">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/musify.png" alt="Musify">
-              </div>
-              <p class="mt-2 text-xs">Musify</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/gamehub.png" alt="Game Hub">
-              </div>
-              <p class="mt-2 text-xs">Game Hub</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/orangeware.png" alt="OrangeWare">
-              </div>
-              <p class="mt-2 text-xs">OrangeWare</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/wikipedia.png" alt="Wikipedia">
-              </div>
-              <p class="mt-2 text-xs">Wikipedia</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/ebooks.png" alt="eBooks">
-              </div>
-              <p class="mt-2 text-xs">eBooks</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/news.png" alt="News Daily">
-              </div>
-              <p class="mt-2 text-xs">News Daily</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="swiper-slide">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/eatbulaga.png" alt="Eat Bulaga">
-              </div>
-              <p class="mt-2 text-xs">Eat Bulaga</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/showtime.jpg" alt="Showtime">
-              </div>
-              <p class="mt-2 text-xs">Showtime</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/wetube.png" alt="WeTube">
-              </div>
-              <p class="mt-2 text-xs">WeTube</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/videoke.png" alt="Videoke Star">
-              </div>
-              <p class="mt-2 text-xs">Videoke Star</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/bible.jpg" alt="Bible">
-              </div>
-              <p class="mt-2 text-xs">Bible</p>
-            </a>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <a href="#" target="_blank" class="flex flex-col items-center">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
-                <img src="assets/icons/google.jpg" alt="Google">
-              </div>
-              <p class="mt-2 text-xs">Google</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    <!-- Pagination -->
-    <div class="swiper-pagination mt-4"></div>
-  </div>
-</div>
-
-<!-- 🌍 Footer Navigation -->
-<div class="flex justify-center items-center mb-6 mt-12">
-  <div class="relative flex items-center justify-between w-full max-w-4xl px-6 bg-[#1c1c1c] rounded-full shadow-lg">
-    <img src="assets/icons/earth.png" alt="Earth" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform ml-4 earth-anim" onclick="window.location.href='https://www.google.com'">
-    <img id="floatingBtn" src="assets/icons/floating.png" alt="Apps" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer transition-transform -mt-8 sm:-mt-10 z-10" onclick="openAppsMenu()">
-    <img src="assets/icons/mars.png" alt="Mars" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform mr-4 mars-anim" onclick="window.location.href='mars_intranet.html'">
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-const welcomePopup = document.getElementById("welcomePopup");
-const introVideo = document.getElementById("introVideo");
-const videoSource = document.getElementById("videoSource");
-const nextVideoBtn = document.getElementById("nextVideoBtn"); // ✅ added
-
-// 🎞️ List all your videos in the player folder
-const videoPlaylist = [
-  "player/VPsara.mp4",
-  "player/video02.mp4",
-  "player/video03.mp4",
-  "player/video04.mp4"
-];
-
-let currentVideo = 0;
-let autoNextTimeout;
-
-// Function to play next video
-function playNextVideo() {
-  currentVideo = (currentVideo + 1) % videoPlaylist.length;
-  videoSource.src = videoPlaylist[currentVideo];
-  introVideo.load();
-  introVideo.play();
-  nextVideoBtn.classList.add("hidden"); // hide overlay
-  clearTimeout(autoNextTimeout); // stop pending auto next
-}
-
-// 🎵 Welcome Popup Trigger
-welcomePopup.addEventListener("click", () => {
-  welcomePopup.classList.add("hidden");
-  introVideo.muted = false;
-  introVideo.play();
-
-  // ✅ Trigger cache now
-  if (navigator.serviceWorker.controller) {
-    navigator.serviceWorker.controller.postMessage({ action: "cacheVideos" });
-  }
-
-
-  // Switch video when one ends
-  introVideo.addEventListener("ended", () => {
-    nextVideoBtn.classList.remove("hidden");
-
-    // Auto play next video after 5s if user does nothing
-    autoNextTimeout = setTimeout(() => {
-      playNextVideo();
-    }, 5000);
-  });
-
-  // Wait 15 seconds, then start ads
-  setTimeout(() => {
-    showAd(); // show first ad
-    setInterval(showAd, 60000); // repeat every 60s
-  }, 15000);
-});
-
-// Click overlay to play immediately
-nextVideoBtn.addEventListener("click", () => {
-  introVideo.muted = false; // ensure sound is ON
-  playNextVideo();
-});
-
-  // Register service worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').then(() => {
-    console.log('✅ Service Worker registered');
-  });
-}
-
-// 🔄 Swiper
-const swiper = new Swiper('.swiper', {
-  loop: false,
-  pagination: { el: '.swiper-pagination', clickable: true }
-});
-
-// 🎯 Rotating Ads
-const adOverlay = document.getElementById('ad-overlay');
-const adImage = document.getElementById('ad-image');
-const adTitle = document.getElementById('ad-title');
-const adText = document.getElementById('ad-text');
-const adBtn = document.getElementById('ad-btn');
-const adLink = document.getElementById('ad-link');
-
-const ads = [
-  {
-    img: "assets/POPUP/EYEBERRY/wangod.jpg",
-    title: "Eyeberry Gold",
-    text: "Nourish your eyes with Eyeberry Gold — packed with antioxidants to support vision and protect from digital strain.",
-    btn: "Buy Now",
-    btnLink: "https://example.com/eyeberry-gold",
-    color: "yellow"
-  },
-  {
-    img: "assets/POPUP/VP/sara.png",
-    title: " One Philippines, One Future, One Sara.",
-    text: "We Support Sara",
-    btn: "Learn More",
-    btnLink: "https://www.ovp.gov.ph/",
-    color: "green"
-  },
-  {
-    img: "assets/POPUP/EYEBERRY/eyeberry02.jpg",
-    title: "Eyeberry",
-    text: "Packed with antioxidants to support vision and protect from digital strain.",
-    btn: "Shop Now",
-    btnLink: "https://example.com/eyecare-pro",
-    color: "blue"
-  },
-  {
-    img: "Ad/ad4.jpg",
-    title: "ClearSight",
-    text: "Boost your vision with ClearSight — advanced formula for sharper focus and eye comfort.",
-    btn: "Discover Now",
-    btnLink: "https://example.com/clearsight",
-    color: "purple"
-  }
-];
-
-let currentAd = 0;
-
-function showAd() {
-  const ad = ads[currentAd];
-  adImage.src = ad.img;
-  adTitle.textContent = ad.title;
-  adText.textContent = ad.text;
-  adBtn.textContent = ad.btn;
-  adBtn.href = ad.btnLink;
-  adLink.href = ad.btnLink;
-
-  adOverlay.classList.remove("hidden");
-  setTimeout(hideAd, 6000);
-}
-
-function hideAd() {
-  adOverlay.classList.add("hidden");
-  currentAd = (currentAd + 1) % ads.length;
-}
-
-document.getElementById("close-ad").onclick = hideAd;
-
-// ⛅ Weather
-const weatherSpan = document.getElementById('weather');
-async function fetchWeather() {
-  try {
-    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=9.33&longitude=125.97&current_weather=true");
-    const data = await res.json();
-    const temp = Math.round(data.current_weather.temperature);
-    const code = data.current_weather.weathercode;
-    weatherSpan.innerHTML = `${getIcon(code)} ${temp}°C`;
-  } catch {
-    weatherSpan.textContent = '🌡️ N/A';
-  }
-}
-function getIcon(c) {
-  if(c===0) return '☀️';
-  if([1,2].includes(c)) return '⛅';
-  if(c===3) return '☁️';
-  if([45,48].includes(c)) return '🌫️';
-  if([51,53,55,56,57].includes(c)) return '🌦️';
-  if([61,63,65,66,67].includes(c)) return '🌧️';
-  if([71,73,75,77].includes(c)) return '❄️';
-  if([80,81,82].includes(c)) return '🌧️';
-  if(c===95) return '⛈️';
-  return '🌡️';
-}
-fetchWeather();
-setInterval(fetchWeather, 600000);
-
-// ⏰ Live Clock
-const liveClock = document.getElementById("liveClock");
-function updateLiveClock() {
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2,'0');
-  const m = String(now.getMinutes()).padStart(2,'0');
-  liveClock.textContent = `${h}:${m}`;
-}
-setInterval(updateLiveClock,1000);
-updateLiveClock();
-
-// 📱 Apps Menu
-function openAppsMenu(){ document.getElementById("appsMenu").classList.remove("hidden"); }
-function closeAppsMenu(){ document.getElementById("appsMenu").classList.add("hidden"); }
-</script>
+<body>
+    <header>
+        <h1>Support Governor Johnny T. Pimentel</h1>
+    </header>
+    <section class="hero">
+        <img src="assets/icons/gov02.png" alt="Johnny T. Pimentel">
+        <h2>We Stand with Governor Johnny!</h2>
+    </section>
+    <section class="content">
+        <h2>Why We Support Gov. Johnny </h2>
+        <p>
+            Governor Johnny T. Pimentel, a seasoned leader and public servant, has dedicated his career to uplifting Surigao del Sur. Elected as governor in 2025, he previously served as the province’s governor from 2010 to 2016 and as a representative of Surigao del Sur’s 2nd District from 2016 to 2025. His leadership has brought significant progress, including infrastructure development, peace initiatives, and improved public services.
+        </p>
+        <p>
+            Known for his role in facilitating the release of captives during his tenure and his legislative contributions, including authoring 72 enacted laws, Governor Johnny continues to champion the welfare of Surigaonons. Join us in supporting his vision for a prosperous and peaceful Surigao del Sur!
+        </p>
+        <a href="#join" class="support-btn">Join the Movement</a>
+        <h2>His Achievements</h2>
+        <ul>
+            <li>Governor of Surigao del Sur (2010–2016, 2025–present)</li>
+            <li>Authored and co-authored 602 bills, with 72 enacted into law</li>
+            <li>Facilitated the release of captives, including two mayors, from the New People’s Army</li>
+            <li>Grand Master of the Most Worshipful Grand Lodge of Free and Accepted Masons of the Philippines (2022–2023)</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2025 Support Governor Johnny T. Pimentel. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
