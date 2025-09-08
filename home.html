@@ -7,6 +7,12 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
+   /* 🚫 Block desktop view */
+@media (min-width: 1024px) {
+  #desktop-block { display: flex !important; }
+  body > *:not(#desktop-block) { display: none !important; }
+}
+  
   body { background-color:#000; color:#fff; }
 
   .app-icon img { width:64px; height:64px; border-radius:50%; }
@@ -44,6 +50,14 @@
 </style>
 </head>
 <body class="text-white">
+     <!-- 🚫 Desktop Block Message -->
+<div id="desktop-block" class="hidden fixed inset-0 bg-black text-white flex items-center justify-center text-center z-50">
+  <div>
+    <h1 class="text-3xl font-bold mb-4">📱 Mobile Only</h1>
+    <p class="text-lg">This portal is only available on mobile devices.<br>
+    Please use your phone to continue.</p>
+  </div>
+</div>
 
 <!-- 👋 Welcome Logo Popup -->
 <div id="welcomePopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
