@@ -72,13 +72,20 @@
   </div>
 </div>
 
-<!-- 🎥 Local Video Player -->
-<div class="relative w-full max-w-4xl mx-auto aspect-video mb-8">
-  <video id="introVideo" class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" autoplay muted loop>
-    <source src="player/VPsara.mp4" type="video/mp4">
+<!-- 🎥 Local Video Playlist -->
+<div class="relative w-full max-w-4xl mx-auto aspect-video mb-4">
+  <video id="introVideo" class="w-full h-full rounded-lg shadow-lg" autoplay muted>
+    <source id="videoSource" src="player/VPsara.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+  <!-- ▶ Next Video overlay -->
+  <div id="nextVideoBtn" 
+       class="hidden absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 cursor-pointer">
+    <span class="text-yellow-400 font-bold text-2xl">▶ Next Video</span>
+  </div>
 </div>
+
 
 <!-- 🔎 Header -->
 <div class="flex flex-col items-center mb-4 mt-2">
@@ -286,12 +293,45 @@
 <script>
 const welcomePopup = document.getElementById("welcomePopup");
 const introVideo = document.getElementById("introVideo");
+const videoSource = document.getElementById("videoSource");
+const nextVideoBtn = document.getElementById("nextVideoBtn"); // ✅ added
+
+// 🎞️ List all your videos in the player folder
+const videoPlaylist = [
+  "player/VPsara.mp4",
+  "player/video02.mp4",
+  "player/video03.mp4",
+  "player/video04.mp4"
+];
+
+let currentVideo = 0;
+let autoNextTimeout;
+
+// Function to play next video
+function playNextVideo() {
+  currentVideo = (currentVideo + 1) % videoPlaylist.length;
+  videoSource.src = videoPlaylist[currentVideo];
+  introVideo.load();
+  introVideo.play();
+  nextVideoBtn.classList.add("hidden"); // hide overlay
+  clearTimeout(autoNextTimeout); // stop pending auto next
+}
 
 // 🎵 Welcome Popup Trigger
 welcomePopup.addEventListener("click", () => {
   welcomePopup.classList.add("hidden");
   introVideo.muted = false;
   introVideo.play();
+
+  // Switch video when one ends
+  introVideo.addEventListener("ended", () => {
+    nextVideoBtn.classList.remove("hidden");
+
+    // Auto play next video after 5s if user does nothing
+    autoNextTimeout = setTimeout(() => {
+      playNextVideo();
+    }, 5000);
+  });
 
   // Wait 15 seconds, then start ads
   setTimeout(() => {
@@ -300,6 +340,11 @@ welcomePopup.addEventListener("click", () => {
   }, 15000);
 });
 
+// Click overlay to play immediately
+nextVideoBtn.addEventListener("click", () => {
+  introVideo.muted = false; // ensure sound is ON
+  playNextVideo();
+});
 
 // 🔄 Swiper
 const swiper = new Swiper('.swiper', {
