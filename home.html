@@ -385,9 +385,8 @@
 const welcomePopup = document.getElementById("welcomePopup");
 const introVideo = document.getElementById("introVideo");
 const videoSource = document.getElementById("videoSource");
-const nextVideoBtn = document.getElementById("nextVideoBtn"); // ✅ added
 
-// 🎞️ List all your videos in the player folder
+// 🎞️ Video Playlist
 const videoPlaylist = [
   "player/VPsara.mp4",
   "player/video02.mp4",
@@ -396,19 +395,16 @@ const videoPlaylist = [
 ];
 
 let currentVideo = 0;
-let autoNextTimeout;
 
-// Function to play next video
+// Function to play next video (seamless loop)
 function playNextVideo() {
   currentVideo = (currentVideo + 1) % videoPlaylist.length;
   videoSource.src = videoPlaylist[currentVideo];
   introVideo.load();
   introVideo.play();
-  nextVideoBtn.classList.add("hidden"); // hide overlay
-  clearTimeout(autoNextTimeout); // stop pending auto next
 }
 
-// 🎵 Welcome Popup Trigger
+// 🎵 Welcome Popup
 welcomePopup.addEventListener("click", () => {
   welcomePopup.classList.add("hidden");
   introVideo.muted = false;
@@ -419,36 +415,15 @@ welcomePopup.addEventListener("click", () => {
     navigator.serviceWorker.controller.postMessage({ action: "cacheVideos" });
   }
 
-
-  // Switch video when one ends
-  introVideo.addEventListener("ended", () => {
-    nextVideoBtn.classList.remove("hidden");
-
-    // Auto play next video after 5s if user does nothing
-    autoNextTimeout = setTimeout(() => {
-      playNextVideo();
-    }, 5000);
-  });
-
-  // Wait 15 seconds, then start ads
+  // ✅ Ads start after 20s
   setTimeout(() => {
-    showAd(); // show first ad
-    setInterval(showAd, 60000); // repeat every 60s
+    showAd();
+    setInterval(showAd, 60000);
   }, 20000);
 });
 
-// Click overlay to play immediately
-nextVideoBtn.addEventListener("click", () => {
-  introVideo.muted = false; // ensure sound is ON
-  playNextVideo();
-});
-
-  // Register service worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').then(() => {
-    console.log('✅ Service Worker registered');
-  });
-}
+// ✅ Seamless loop (auto play next when video ends)
+introVideo.addEventListener("ended", playNextVideo);
 
 // 🔄 Swiper
 const swiper = new Swiper('.swiper', {
@@ -465,7 +440,7 @@ const adBtn = document.getElementById('ad-btn');
 const adLink = document.getElementById('ad-link');
 
 const ads = [
-   {
+  {
     img: "assets/POPUP/VP/sara.png",
     title: " One Philippines, One Future, One Sara.",
     text: "We Support Sara",
@@ -473,7 +448,6 @@ const ads = [
     btnLink: "https://www.ovp.gov.ph/",
     color: "green"
   },
-
   {
     img: "assets/POPUP/EYEBERRY/wangod.png",
     title: "Eyeberry Gold",
@@ -482,7 +456,6 @@ const ads = [
     btnLink: "https://example.com/eyeberry-gold",
     color: "yellow"
   },
-  
   {
     img: "assets/POPUP/VP/Gradio.png",
     title: "Dj Blayn Castello",
@@ -565,6 +538,13 @@ updateLiveClock();
 // 📱 Apps Menu
 function openAppsMenu(){ document.getElementById("appsMenu").classList.remove("hidden"); }
 function closeAppsMenu(){ document.getElementById("appsMenu").classList.add("hidden"); }
+
+// 🛠 Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(() => {
+    console.log('✅ Service Worker registered');
+  });
+}
 </script>
 </body>
 </html>
