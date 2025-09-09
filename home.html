@@ -26,13 +26,6 @@
   @keyframes slideUp { from{transform:translateY(100%);opacity:0;} to{transform:translateY(0);opacity:1;} }
   .animate-slideUp { animation:slideUp .8s ease-out forwards; }
 
-  /* Footer planets */
-  @keyframes spin-cw { from{transform:rotate(0);} to{transform:rotate(360deg);} }
-  @keyframes spin-ccw { from{transform:rotate(0);} to{transform:rotate(-360deg);} }
-  @keyframes pulse-blue { 0%,100%{filter:drop-shadow(0 0 8px #3b82f6);} 50%{filter:drop-shadow(0 0 20px #60a5fa);} }
-  @keyframes pulse-red  { 0%,100%{filter:drop-shadow(0 0 8px #ef4444);} 50%{filter:drop-shadow(0 0 20px #f87171);} }
-  .earth-anim { animation:spin-cw 20s linear infinite,pulse-blue 3s ease-in-out infinite; }
-  .mars-anim  { animation:spin-ccw 25s linear infinite,pulse-red 4s ease-in-out infinite; }
 
   /* 📱 Base (Mobile-first styles) */
   .search-bar { width: 100%; max-width: 20rem; margin: 0 auto; }
@@ -297,9 +290,9 @@
 <!-- 🌍 Footer Navigation -->
 <div class="flex justify-center items-center mb-6 mt-12">
   <div class="relative flex items-center justify-between w-full max-w-4xl px-6 bg-[#1c1c1c] rounded-full shadow-lg">
-    <img src="assets/icons/earth.png" alt="Earth" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform ml-4 earth-anim" onclick="window.location.href='https://www.google.com'">
+    <img src="assets/GIF/earth.gif" alt="Earth" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform ml-4" onclick="window.location.href='https://www.google.com'">
     <img id="floatingBtn" src="assets/icons/Home.png" alt="Apps" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer transition-transform -mt-8 sm:-mt-10 z-10" onclick="openAppsMenu()">
-    <img src="assets/icons/mars.png" alt="Mars" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform mr-4 mars-anim" onclick="window.location.href='mars_intranet.html'">
+    <img src="assets/GIF/mars.gif" alt="Mars" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform mr-4" onclick="window.location.href='mars_intranet.html'">
   </div>
 </div>
 
@@ -386,14 +379,6 @@
     </a>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-// ✅ Your existing JS stays unchanged
-</script>
-</body>
-</html>
-
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
