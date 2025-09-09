@@ -66,7 +66,7 @@
 
 <!-- 📰 Ad Overlay -->
 <div id="ad-overlay" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-white text-black animate-slideUp">
+  <div class="relative rounded-xl shadow-xl p-6 max-w-sm text-center bg-transparent text-white animate-slideUp">
     <button id="close-ad" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">✖</button>
     <a id="ad-link" href="#" target="_blank">
       <img id="ad-image" src="" alt="Ad Image" class="w-full rounded-lg mb-4">
@@ -165,7 +165,7 @@
             </a>
           </div>
           <div class="flex flex-col items-center text-center">
-            <a href="smileflex.html" target="_blank" class="flex flex-col items-center">
+            <a href="movie_streaming/index.html" target="_blank" class="flex flex-col items-center">
               <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-gray-700 app-icon">
                 <img src="assets/icons/smileflex.png" alt="Smileflex">
               </div>
@@ -325,7 +325,7 @@
       <img src="assets/icons/GRADIO.png" class="w-16 h-16 rounded-full mb-2" alt="Gradio">
       <p class="text-xs">Gradio FM</p>
     </a>
-    <a href="smileflex.html" class="flex flex-col items-center">
+    <a href="movie_streaming/index.html" class="flex flex-col items-center">
       <img src="assets/icons/smileflex.png" class="w-16 h-16 rounded-full mb-2" alt="Smileflex">
       <p class="text-xs">Smileflex</p>
     </a>
@@ -391,8 +391,8 @@ const nextVideoBtn = document.getElementById("nextVideoBtn"); // ✅ added
 const videoPlaylist = [
   "player/VPsara.mp4",
   "player/video02.mp4",
-  "player/video03.mp4",
-  "player/video04.mp4"
+  "player/Zandro.mp4",
+  "player/Ahas.mp4"
 ];
 
 let currentVideo = 0;
@@ -434,7 +434,7 @@ welcomePopup.addEventListener("click", () => {
   setTimeout(() => {
     showAd(); // show first ad
     setInterval(showAd, 60000); // repeat every 60s
-  }, 15000);
+  }, 20000);
 });
 
 // Click overlay to play immediately
@@ -465,15 +465,7 @@ const adBtn = document.getElementById('ad-btn');
 const adLink = document.getElementById('ad-link');
 
 const ads = [
-  {
-    img: "assets/POPUP/EYEBERRY/wangod.jpg",
-    title: "Eyeberry Gold",
-    text: "Nourish your eyes with Eyeberry Gold — packed with antioxidants to support vision and protect from digital strain.",
-    btn: "Buy Now",
-    btnLink: "https://example.com/eyeberry-gold",
-    color: "yellow"
-  },
-  {
+   {
     img: "assets/POPUP/VP/sara.png",
     title: " One Philippines, One Future, One Sara.",
     text: "We Support Sara",
@@ -481,10 +473,20 @@ const ads = [
     btnLink: "https://www.ovp.gov.ph/",
     color: "green"
   },
+
   {
-    img: "assets/POPUP/EYEBERRY/eyeberry02.jpg",
-    title: "Eyeberry",
-    text: "Packed with antioxidants to support vision and protect from digital strain.",
+    img: "assets/POPUP/EYEBERRY/wangod.png",
+    title: "Eyeberry Gold",
+    text: "Nourish your eyes with Eyeberry Gold — packed with antioxidants to support vision and protect from digital strain.",
+    btn: "Buy Now",
+    btnLink: "https://example.com/eyeberry-gold",
+    color: "yellow"
+  },
+  
+  {
+    img: "assets/POPUP/VP/Gradio.png",
+    title: "Dj Blayn Castello",
+    text: "Gradio Cantilan",
     btn: "Shop Now",
     btnLink: "https://example.com/eyecare-pro",
     color: "blue"
