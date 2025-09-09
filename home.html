@@ -298,10 +298,102 @@
 <div class="flex justify-center items-center mb-6 mt-12">
   <div class="relative flex items-center justify-between w-full max-w-4xl px-6 bg-[#1c1c1c] rounded-full shadow-lg">
     <img src="assets/icons/earth.png" alt="Earth" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform ml-4 earth-anim" onclick="window.location.href='https://www.google.com'">
-    <img id="floatingBtn" src="assets/icons/floating.png" alt="Apps" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer transition-transform -mt-8 sm:-mt-10 z-10" onclick="openAppsMenu()">
+    <img id="floatingBtn" src="assets/icons/Home.png" alt="Apps" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 cursor-pointer transition-transform -mt-8 sm:-mt-10 z-10" onclick="openAppsMenu()">
     <img src="assets/icons/mars.png" alt="Mars" class="w-16 h-16 cursor-pointer hover:scale-110 transition-transform mr-4 mars-anim" onclick="window.location.href='mars_intranet.html'">
   </div>
 </div>
+
+<!-- 📱 Apps Overlay Menu -->
+<div id="appsMenu" class="hidden fixed inset-0 bg-black bg-opacity-95 z-50 flex flex-col items-center p-6 overflow-y-auto">
+  <div class="w-full flex justify-between items-center mb-6">
+    <h2 class="text-xl font-bold">All Apps</h2>
+    <button onclick="closeAppsMenu()" class="text-white text-2xl">✖</button>
+  </div>
+  
+     <!-- Grid of Apps -->
+  <div class="grid grid-cols-3 gap-6 w-full max-w-md text-center">
+    <a href="VP.html" class="flex flex-col items-center">
+      <img src="assets/icons/inday.jpg" class="w-16 h-16 rounded-full mb-2" alt="VP">
+      <p class="text-xs">VP Inday Sara</p>
+    </a>
+    <a href="gov.html" class="flex flex-col items-center">
+      <img src="assets/icons/johnny.png" class="w-16 h-16 rounded-full mb-2" alt="Gov">
+      <p class="text-xs">Gov. Johnny</p>
+    </a>
+    <a href="mayor.html" class="flex flex-col items-center">
+      <img src="assets/icons/digoy.png" class="w-16 h-16 rounded-full mb-2" alt="Mayor">
+      <p class="text-xs">Mayor Digoy</p>
+    </a>
+    <a href="cantilan.html" class="flex flex-col items-center">
+      <img src="assets/icons/wecantilan.png" class="w-16 h-16 rounded-full mb-2" alt="Cantilan">
+      <p class="text-xs">We❤Cantilan</p>
+    </a>
+    <a href="home.html" class="flex flex-col items-center">
+      <img src="assets/icons/GRADIO.png" class="w-16 h-16 rounded-full mb-2" alt="Gradio">
+      <p class="text-xs">Gradio FM</p>
+    </a>
+    <a href="smileflex.html" class="flex flex-col items-center">
+      <img src="assets/icons/smileflex.png" class="w-16 h-16 rounded-full mb-2" alt="Smileflex">
+      <p class="text-xs">Smileflex</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/musify.png" class="w-16 h-16 rounded-full mb-2" alt="Musify">
+      <p class="text-xs">Musify</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/gamehub.png" class="w-16 h-16 rounded-full mb-2" alt="GameHub">
+      <p class="text-xs">Game Hub</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/orangeware.png" class="w-16 h-16 rounded-full mb-2" alt="OrangeWare">
+      <p class="text-xs">OrangeWare</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/wikipedia.png" class="w-16 h-16 rounded-full mb-2" alt="Wikipedia">
+      <p class="text-xs">Wikipedia</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/ebooks.png" class="w-16 h-16 rounded-full mb-2" alt="eBooks">
+      <p class="text-xs">eBooks</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/news.png" class="w-16 h-16 rounded-full mb-2" alt="News">
+      <p class="text-xs">News Daily</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/eatbulaga.png" class="w-16 h-16 rounded-full mb-2" alt="Eat Bulaga">
+      <p class="text-xs">Eat Bulaga</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/showtime.jpg" class="w-16 h-16 rounded-full mb-2" alt="Showtime">
+      <p class="text-xs">Showtime</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/wetube.png" class="w-16 h-16 rounded-full mb-2" alt="WeTube">
+      <p class="text-xs">WeTube</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/videoke.png" class="w-16 h-16 rounded-full mb-2" alt="Videoke">
+      <p class="text-xs">Videoke Star</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/bible.jpg" class="w-16 h-16 rounded-full mb-2" alt="Bible">
+      <p class="text-xs">Bible</p>
+    </a>
+    <a href="#" class="flex flex-col items-center">
+      <img src="assets/icons/google.jpg" class="w-16 h-16 rounded-full mb-2" alt="Google">
+      <p class="text-xs">Google</p>
+    </a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// ✅ Your existing JS stays unchanged
+</script>
+</body>
+</html>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
