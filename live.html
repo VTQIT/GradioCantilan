@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Movie Player</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    header {
+      width: 100%;
+      padding: 12px;
+      text-align: center;
+      background: #111;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #f1f1f1;
+    }
+    video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      background: #000;
+      outline: none;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 10px;
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background: #111;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>🎬 My Movie Streaming</header>
+
+  <div class="container">
+    <video id="moviePlayer" controls playsinline>
+      <source src="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <footer>Powered by Google Drive • Mobile Friendly Player</footer>
+
+  <script>
+    // Auto-resize for mobile orientation
+    const video = document.getElementById('moviePlayer');
+    function resizeVideo() {
+      if (window.innerHeight > window.innerWidth) {
+        video.style.height = "auto";
+      } else {
+        video.style.height = "80vh";
+      }
+    }
+    window.addEventListener('resize', resizeVideo);
+    resizeVideo();
+  </script>
+</body>
+</html>
