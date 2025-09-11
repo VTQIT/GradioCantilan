@@ -99,7 +99,6 @@
   <div class="flex items-center gap-3">
     <img src="assets/icons/search.png" alt="Search Logo" class="h-12 opacity-80" />
     <img src="assets/icons/NEST_SEARCH.png" alt="Nest Search Logo" class="nest-logo" />
-    <span id="weather" class="text-lg">☁️ Loading...</span>
   </div>
 </div>
 
@@ -109,12 +108,23 @@
     class="w-full p-3 pl-12 pr-12 rounded-full bg-gray-700 text-white focus:outline-none shadow-md" />
 </div>
 
-<!-- Marquee -->
+<!-- 📰 Live News Marquee (clickable) -->
 <div class="w-full overflow-hidden mb-6">
-  <p class="text-[15px] sm:text-sm text-gray-300 whitespace-nowrap animate-marquee">
-   “Don Jose Guardo showed us that technology can be driven by compassion, and through Gradio Smile Wifi, his legacy continues to empower and inspire.”
-  </p>
+  <a href="live.html" 
+     class="text-[15px] sm:text-sm text-gray-300 whitespace-nowrap animate-marquee flex items-center gap-2">
+     
+    <!-- 🔴 LIVE Badge -->
+    <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded-md animate-pulse">
+      LIVE
+    </span>
+    
+    <!-- 📰 Headline -->
+    <span class="hover:text-yellow-300 transition">
+      🎧 DJ Blayne Castillo | Breaking News: Gradio Portal launches today!
+    </span>
+  </a>
 </div>
+
 
 <!-- App Slider -->
 <div class="w-full max-w-2xl">
@@ -618,3 +628,4 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
