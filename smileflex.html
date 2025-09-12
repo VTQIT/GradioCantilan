@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smileplex Streaming</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    /* 📱 Mobile-only */
+    @media (min-width: 1024px) {
+      #mobile-app { display: none !important; }
+      #desktop-block { display: flex !important; }
+    }
+    @media (max-width: 1023px) {
+      #mobile-app { display: block !important; }
+      #desktop-block { display: none !important; }
+    }
+    body { background-color: #000; color: #fff; }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+  <!-- 🚫 Block Desktop -->
+  <div id="desktop-block" class="hidden flex-col items-center justify-center text-center p-10">
+    <h1 class="text-2xl font-bold mb-4">Smileplex Streaming</h1>
+    <p class="text-lg">This site is available on mobile devices only 📱</p>
+  </div>
+
+  <!-- 📱 Mobile App -->
+  <div id="mobile-app" class="w-full">
+
+    <!-- 🔝 Logo -->
+    <header class="p-3 bg-gray-900 flex items-center justify-center shadow-md">
+      <a href="home.html">
+        <img src="assets/icons/smileflex.png" alt="Smileplex Logo" class="h-10">
+      </a>
+    </header>
+
+    <!-- 🎬 Video Player -->
+    <div class="p-2">
+      <video id="player" class="w-full rounded-lg shadow-lg" controls autoplay playsinline>
+        <source src="" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <!-- 📖 Video Info -->
+    <div class="px-3 pb-4">
+      <h2 id="videoTitle" class="text-lg font-bold"></h2>
+      <p id="videoSubtitle" class="text-sm text-gray-300"></p>
+      <p id="videoDescription" class="text-xs text-gray-400 mt-1"></p>
+    </div>
+
+    <!-- 🎞️ Slider -->
+    <div class="p-2">
+      <h2 class="text-xl font-semibold mb-2">Movie Selection</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="videoSlider"></div>
+      </div>
+    </div>
+
+    <!-- 📂 Category Section -->
+    <div class="p-3">
+      <h2 class="text-xl font-semibold mb-2">Categories</h2>
+      <div id="categoryList" class="flex flex-wrap gap-2"></div>
+    </div>
+  </div>
+
+  <script>
+    // 🎥 Your Movies
+    var mediaJSON = {
+      "categories": [{
+        "name": "Movies",
+        "videos": [
+          { "title": "Big Buck Bunny", "subtitle": "By Blender Foundation", "description": "A giant rabbit with a heart bigger than himself.", "sources": ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"], "thumb": "smile-flex/01.jpg" },
+          { "title": "Elephant Dream", "subtitle": "By Blender Foundation", "description": "The first Blender Open Movie from 2006.", "sources": ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"], "thumb": "smile-flex/02.jpg" },
+          { "title": "Sintel", "subtitle": "By Blender Foundation", "description": "An independently produced short film from Blender Foundation.", "sources": ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"], "thumb": "smile-flex/03.jpg" },
+          { "title": "Tears of Steel", "subtitle": "By Blender Foundation", "description": "A compelling sci-fi short created with open source tools.", "sources": ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"], "thumb": "smile-flex/04.jpg" }
+        ]
+      }]
+    };
+
+    const player = document.getElementById("player");
+    const slider = document.getElementById("videoSlider");
+    const videoTitle = document.getElementById("videoTitle");
+    const videoSubtitle = document.getElementById("videoSubtitle");
+    const videoDescription = document.getElementById("videoDescription");
+
+    // Function to load a movie into player & info
+    function loadMovie(video) {
+      player.src = video.sources[0];
+      videoTitle.textContent = video.title;
+      videoSubtitle.textContent = video.subtitle;
+      videoDescription.textContent = video.description;
+      player.play();
+    }
+
+    // ⏯️ Load videos into slider
+    mediaJSON.categories[0].videos.forEach((video, i) => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide flex flex-col items-center text-center";
+      slide.innerHTML = `
+        <img src="${video.thumb}" alt="${video.title}" class="w-28 h-16 object-cover rounded-lg shadow-md mb-1 cursor-pointer">
+        <p class="text-xs">${video.title}</p>
+      `;
+      slide.onclick = () => loadMovie(video);
+      slider.appendChild(slide);
+      if (i === 0) loadMovie(video); // Load first movie
+    });
+
+    // 🎚️ Init Swiper
+    new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      freeMode: true,
+    });
+
+    // 📂 Load Categories
+    const categoryList = document.getElementById("categoryList");
+    mediaJSON.categories.forEach(cat => {
+      const tag = document.createElement("span");
+      tag.className = "px-3 py-1 bg-gray-800 text-sm rounded-full";
+      tag.textContent = cat.name;
+      categoryList.appendChild(tag);
+    });
+  </script>
+</body>
+</html>
