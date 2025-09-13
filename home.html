@@ -435,78 +435,90 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    const welcomePopup = document.getElementById("welcomePopup");
-    const introVideo = document.getElementById("introVideo");
-    const videoSource = document.getElementById("videoSource");
+   const welcomePopup = document.getElementById("welcomePopup");
+  const introVideo = document.getElementById("introVideo");
+  const videoSource = document.getElementById("videoSource");
+  const nextVideoBtn = document.getElementById("nextVideoBtn");
 
-    // 🎞️ All videos in folder (Sara must be included here)
-    const videoPlaylist = [
-      "player/VPsara.mp4",   // Always first
-      "player/1.mp4",
-      "player/2.mp4",
-      "player/3.mp4",
-      "player/4.mp4",
-      "player/5.mp4",
-      "player/6.mp4"
-    ];
+  // 🎞️ Playlist (Sara always first)
+  const videoPlaylist = [
+    "player/VPsara.mp4",
+    "player/1.mp4",
+    "player/2.mp4",
+    "player/3.mp4",
+    "player/4.mp4",
+    "player/5.mp4",
+    "player/6.mp4"
+  ];
 
-    let currentVideo = 0;         // Start with Sara
-    let shuffledList = [];        // Will hold random order (excluding Sara)
+  let currentVideo = 0;
+  let shuffledList = [];
 
-    // 🔀 Shuffle helper (Fisher-Yates)
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
+  // 🔀 Shuffle helper
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function prepareShuffle() {
+    const rest = videoPlaylist.slice(1); // exclude Sara
+    shuffledList = shuffle(rest.slice());
+  }
+
+  function playNextVideo() {
+    if (currentVideo === 0) {
+      prepareShuffle(); // after Sara, start shuffle
+    }
+    if (shuffledList.length === 0) {
+      prepareShuffle(); // loop forever
     }
 
-    // 🎬 Prepare a new shuffled list (excluding Sara)
-    function prepareShuffle() {
-      const rest = videoPlaylist.slice(1); // skip Sara
-      shuffledList = shuffle(rest.slice()); // make copy + shuffle
-    }
+    const nextVideo = shuffledList.shift();
+    currentVideo = videoPlaylist.indexOf(nextVideo);
 
-    // 🎬 Play next video
-    function playNextVideo() {
-      if (currentVideo === 0) {
-        // First time, prepare shuffle after Sara
-        prepareShuffle();
-      }
-      
-      if (shuffledList.length === 0) {
-        // Restart shuffle when finished
-        prepareShuffle();
-      }
+    videoSource.src = nextVideo;
+    introVideo.load();
+    introVideo.play();
+  }
 
-      // Get next from shuffled list
-      const nextVideo = shuffledList.shift();
-      currentVideo = videoPlaylist.indexOf(nextVideo);
+  // ▶ Manual "Next Video" button
+  nextVideoBtn.addEventListener("click", () => {
+    nextVideoBtn.classList.add("hidden");
+    playNextVideo();
+  });
 
-      videoSource.src = nextVideo;
-      introVideo.load();
-      introVideo.play();
-    }
+  // ▶ Auto-play next when video ends
+  introVideo.addEventListener("ended", () => {
+    playNextVideo();
+  });
 
-    // 🎵 Welcome Popup
-    welcomePopup.addEventListener("click", () => {
-      welcomePopup.classList.add("hidden");
-      introVideo.muted = false;
-      introVideo.play();
+  // ▶ Trigger next when clicking on the video itself
+  introVideo.addEventListener("click", () => {
+    playNextVideo();
+  });
 
-      if (navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({ action: "cacheVideos" });
-      }
-
-      setTimeout(() => {
-        showAd();
-        setInterval(showAd, 60000);
-      }, 20000);
+  // 👋 Welcome Popup trigger
+  welcomePopup.addEventListener("click", () => {
+    welcomePopup.classList.add("hidden");
+    introVideo.muted = false;
+    introVideo.play().catch(() => {
+      // If blocked by browser, show Next button
+      nextVideoBtn.classList.remove("hidden");
     });
 
-    // ✅ Auto play next when video ends
-    introVideo.addEventListener("ended", playNextVideo);
+    if (navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage({ action: "cacheVideos" });
+    }
+
+    // Ads start after 20s
+    setTimeout(() => {
+      showAd();
+      setInterval(showAd, 60000);
+    }, 20000);
+  });
 
     // 🔄 Swiper
     const swiper = new Swiper('.swiper', {
