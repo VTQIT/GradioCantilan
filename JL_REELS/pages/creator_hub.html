@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creator Hub - TikVibe</title>
+    <meta name="description" content="Unlock your creative potential with TikVibe's professional creation tools, monetization opportunities, and creator support programs. Join millions of successful creators today." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftikvibemo1296back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background text-text-primary font-inter overflow-x-hidden">
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-subtle">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.219-5.175 1.219-5.175s-.311-.623-.311-1.544c0-1.446.839-2.525 1.883-2.525.888 0 1.317.666 1.317 1.466 0 .893-.568 2.229-.861 3.467-.245 1.04.522 1.887 1.549 1.887 1.857 0 3.285-1.958 3.285-4.789 0-2.503-1.799-4.253-4.37-4.253-2.977 0-4.727 2.234-4.727 4.546 0 .9.347 1.863.78 2.388.085.104.098.195.072.301-.079.329-.255 1.045-.289 1.193-.045.189-.147.229-.339.138-1.273-.593-2.068-2.456-2.068-3.956 0-3.298 2.397-6.325 6.913-6.325 3.628 0 6.447 2.584 6.447 6.041 0 3.604-2.273 6.505-5.42 6.505-1.058 0-2.055-.549-2.394-1.275 0 0-.524 1.994-.651 2.48-.236.908-.873 2.047-1.301 2.741C9.368 23.977 10.66 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">TikVibe</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="creator_hub.html" class="text-text-primary hover:text-primary transition-quick">Creator Hub</a>
+                    <a href="discover_trends.html" class="text-text-secondary hover:text-primary transition-quick">Discover</a>
+                    <a href="business_solutions.html" class="text-text-secondary hover:text-primary transition-quick">Business</a>
+                    <a href="about_tik_vibe.html" class="text-text-secondary hover:text-primary transition-quick">About</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="flex items-center space-x-4">
+                    <a href="download_app.html" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg gradient-primary text-white font-medium hover:gradient-primary-hover transition-smooth">
+                        Download App
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2 rounded-lg hover:bg-surface transition-quick" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden py-4 border-t border-subtle">
+                <div class="flex flex-col space-y-4">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="creator_hub.html" class="text-text-primary hover:text-primary transition-quick">Creator Hub</a>
+                    <a href="discover_trends.html" class="text-text-secondary hover:text-primary transition-quick">Discover</a>
+                    <a href="business_solutions.html" class="text-text-secondary hover:text-primary transition-quick">Business</a>
+                    <a href="about_tik_vibe.html" class="text-text-secondary hover:text-primary transition-quick">About</a>
+                    <a href="download_app.html" class="inline-flex items-center px-4 py-2 rounded-lg gradient-primary text-white font-medium">
+                        Download App
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Split Screen -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <!-- Background Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/20 via-background to-secondary-900/20"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Creation Interface -->
+                <div class="relative">
+                    <div class="text-center lg:text-left mb-8">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                            <span class="text-gradient">Create</span><br />
+                            <span class="text-white">Without Limits</span>
+                        </h1>
+                        <p class="text-xl text-text-secondary mb-8">
+                            Professional tools, unlimited creativity, and endless earning potential. Your creative journey starts here.
+                        </p>
+                    </div>
+
+                    <!-- Mock Creation Interface -->
+                    <div class="relative bg-surface rounded-2xl p-6 border border-subtle shadow-floating">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold">Video Creation Studio</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                                <span class="text-sm text-text-secondary">Live</span>
+                            </div>
+                        </div>
+
+                        <!-- Video Preview Area -->
+                        <div class="relative bg-background rounded-xl overflow-hidden mb-4" style="aspect-ratio: 9/16; max-height: 300px;">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=400&auto=format&fit=crop" alt="Video Creation Preview" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&dpr=2'; this.onerror=null;" />
+                            
+                            <!-- AR Filter Overlay -->
+                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span class="text-white text-sm">✨ Glow Filter</span>
+                            </div>
+
+                            <!-- Recording Controls -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                                <div class="w-16 h-16 bg-error rounded-full border-4 border-white flex items-center justify-center animate-pulse-gentle">
+                                    <div class="w-6 h-6 bg-white rounded-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creation Tools -->
+                        <div class="grid grid-cols-4 gap-3">
+                            <div class="bg-background rounded-lg p-3 text-center hover:bg-surface-light transition-quick cursor-pointer">
+                                <div class="text-2xl mb-1">🎵</div>
+                                <span class="text-xs text-text-secondary">Music</span>
+                            </div>
+                            <div class="bg-background rounded-lg p-3 text-center hover:bg-surface-light transition-quick cursor-pointer">
+                                <div class="text-2xl mb-1">✨</div>
+                                <span class="text-xs text-text-secondary">Effects</span>
+                            </div>
+                            <div class="bg-background rounded-lg p-3 text-center hover:bg-surface-light transition-quick cursor-pointer">
+                                <div class="text-2xl mb-1">✂️</div>
+                                <span class="text-xs text-text-secondary">Edit</span>
+                            </div>
+                            <div class="bg-background rounded-lg p-3 text-center hover:bg-surface-light transition-quick cursor-pointer">
+                                <div class="text-2xl mb-1">🔥</div>
+                                <span class="text-xs text-text-secondary">Trending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Success Metrics -->
+                <div class="space-y-6">
+                    <!-- Earning Potential Card -->
+                    <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-3.84 3.11-4.1V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 4.15-3.12 4.16z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Earning Potential</h3>
+                                <p class="text-text-secondary">Top creators earn $50K+/month</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-accent">$2.4M</div>
+                                <div class="text-sm text-text-secondary">Paid to creators in 2024</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-secondary">85%</div>
+                                <div class="text-sm text-text-secondary">Revenue share rate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creator Success Stats -->
+                    <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                        <h3 class="text-xl font-bold mb-4">Creator Success Stories</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=60&auto=format&fit=crop" alt="Creator Maya" class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2'; this.onerror=null;" />
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium">Maya Rodriguez</span>
+                                        <span class="text-accent font-bold">2.3M followers</span>
+                                    </div>
+                                    <p class="text-sm text-text-secondary">Dance creator → Brand partnerships</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg" alt="Creator Alex" class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=60&auto=format&fit=crop'; this.onerror=null;" />
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium">Alex Chen</span>
+                                        <span class="text-primary font-bold">1.8M students</span>
+                                    </div>
+                                    <p class="text-sm text-text-secondary">Tech tutorials → Online courses</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=60&auto=format&fit=crop" alt="Creator Sarah" class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.src='https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2'; this.onerror=null;" />
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium">Sarah Johnson</span>
+                                        <span class="text-secondary font-bold">5M+ views</span>
+                                    </div>
+                                    <p class="text-sm text-text-secondary">Fitness content → Gym owner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="download_app.html" class="block w-full text-center px-8 py-4 rounded-xl gradient-primary text-white font-semibold text-lg hover:gradient-primary-hover transition-smooth shadow-floating">
+                        Start Creating Today
+                        <svg class="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Creation Tools -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    <span class="text-gradient">Professional Creation Tools</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Everything you need to create stunning content that stands out and goes viral.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Advanced Editing Suite -->
+                <div class="bg-background rounded-2xl p-8 border border-subtle hover:border-primary/30 transition-smooth group">
+                    <div class="w-16 h-16 rounded-xl gradient-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Advanced Editing Suite</h3>
+                    <p class="text-text-secondary mb-6">
+                        Multi-track timeline, precision cuts, color grading, and professional transitions. Create cinema-quality content on mobile.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Multi-layer video editing</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Professional color correction</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Advanced audio mixing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI-Powered Effects -->
+                <div class="bg-background rounded-2xl p-8 border border-subtle hover:border-secondary/30 transition-smooth group">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI-Powered Effects Library</h3>
+                    <p class="text-text-secondary mb-6">
+                        Cutting-edge AR filters, face tracking, background replacement, and real-time beauty effects powered by machine learning.
+                    </p>
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <div class="aspect-square bg-surface rounded-lg flex items-center justify-center text-2xl">✨</div>
+                        <div class="aspect-square bg-surface rounded-lg flex items-center justify-center text-2xl">🌈</div>
+                        <div class="aspect-square bg-surface rounded-lg flex items-center justify-center text-2xl">🔥</div>
+                    </div>
+                    <p class="text-sm text-text-secondary">500+ effects updated weekly</p>
+                </div>
+
+                <!-- Trending Sound Integration -->
+                <div class="bg-background rounded-2xl p-8 border border-subtle hover:border-accent/30 transition-smooth group">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Trending Sound Integration</h3>
+                    <p class="text-text-secondary mb-6">
+                        Access millions of licensed tracks, trending sounds, and original music. Smart sync technology matches beats to your content.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between bg-surface rounded-lg p-3">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm">Viral Beat Drop</span>
+                            </div>
+                            <span class="text-xs text-accent">TRENDING</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-surface rounded-lg p-3">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm">Dance Anthem 2025</span>
+                            </div>
+                            <span class="text-xs text-error">VIRAL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monetization Opportunities -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    <span class="text-gradient">Monetization Opportunities</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Turn your creativity into a sustainable income with multiple revenue streams and creator support programs.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Revenue Streams -->
+                <div class="space-y-6">
+                    <!-- Creator Fund -->
+                    <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Creator Fund</h3>
+                                <p class="text-text-secondary">Earn from views and engagement</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-2xl font-bold text-accent">$0.02-0.04</div>
+                                <div class="text-sm text-text-secondary">Per 1,000 views</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-primary">$2.4M</div>
+                                <div class="text-sm text-text-secondary">Distributed monthly</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Partnerships -->
+                    <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 16H9V7h9v14z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Brand Partnership Marketplace</h3>
+                                <p class="text-text-secondary">Connect with premium brands</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Micro-influencer (10K-100K)</span>
+                                <span class="font-bold text-accent">$100-1K per post</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Mid-tier (100K-1M)</span>
+                                <span class="font-bold text-secondary">$1K-10K per post</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Macro-influencer (1M+)</span>
+                                <span class="font-bold text-primary">$10K+ per post</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Virtual Gifts -->
+                    <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Virtual Gifts & Tips</h3>
+                                <p class="text-text-secondary">Direct fan support</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="text-center">
+                                <div class="text-3xl mb-1">🎁</div>
+                                <div class="text-xs text-text-secondary">$1-5</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl mb-1">💎</div>
+                                <div class="text-xs text-text-secondary">$5-25</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl mb-1">👑</div>
+                                <div class="text-xs text-text-secondary">$25-100</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl mb-1">🚀</div>
+                                <div class="text-xs text-text-secondary">$100+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Examples -->
+                <div class="bg-surface rounded-2xl p-8 border border-subtle">
+                    <h3 class="text-2xl font-bold mb-6">Real Creator Earnings</h3>
+                    <div class="space-y-6">
+                        <!-- Creator Example 1 -->
+                        <div class="border-b border-subtle pb-6">
+                            <div class="flex items-center mb-3">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=60&auto=format&fit=crop" alt="Maya Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4" onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2'; this.onerror=null;" />
+                                <div>
+                                    <h4 class="font-bold">Maya Rodriguez</h4>
+                                    <p class="text-sm text-text-secondary">Dance & Lifestyle Creator</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-accent">$52K</div>
+                                    <div class="text-xs text-text-secondary">Monthly Revenue</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-secondary">2.3M</div>
+                                    <div class="text-xs text-text-secondary">Followers</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-primary">18</div>
+                                    <div class="text-xs text-text-secondary">Brand Deals</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creator Example 2 -->
+                        <div class="border-b border-subtle pb-6">
+                            <div class="flex items-center mb-3">
+                                <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg" alt="Alex Chen" class="w-12 h-12 rounded-full object-cover mr-4" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=60&auto=format&fit=crop'; this.onerror=null;" />
+                                <div>
+                                    <h4 class="font-bold">Alex Chen</h4>
+                                    <p class="text-sm text-text-secondary">Tech Education Creator</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-accent">$38K</div>
+                                    <div class="text-xs text-text-secondary">Monthly Revenue</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-secondary">1.8M</div>
+                                    <div class="text-xs text-text-secondary">Students</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-primary">12</div>
+                                    <div class="text-xs text-text-secondary">Courses Sold</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creator Example 3 -->
+                        <div>
+                            <div class="flex items-center mb-3">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=60&auto=format&fit=crop" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4" onerror="this.src='https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2'; this.onerror=null;" />
+                                <div>
+                                    <h4 class="font-bold">Sarah Johnson</h4>
+                                    <p class="text-sm text-text-secondary">Fitness & Wellness Creator</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-accent">$45K</div>
+                                    <div class="text-xs text-text-secondary">Monthly Revenue</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-secondary">5M+</div>
+                                    <div class="text-xs text-text-secondary">Challenge Views</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-primary">3</div>
+                                    <div class="text-xs text-text-secondary">Gym Locations</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Creator Journey Timeline -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    <span class="text-gradient">Your Creator Journey</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    From first upload to viral success - see how creators grow on TikVibe with real progression examples.
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent rounded-full"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-16">
+                    <!-- Stage 1: First Upload -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-background rounded-2xl p-6 border border-subtle">
+                                <h3 class="text-xl font-bold mb-2">First Upload</h3>
+                                <p class="text-text-secondary mb-4">Create your first video with our intuitive tools</p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-bold text-primary">Day 1</div>
+                                        <div class="text-text-secondary">0 followers</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-accent">100-500</div>
+                                        <div class="text-text-secondary">First views</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full gradient-primary flex items-center justify-center border-4 border-background">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=300&auto=format&fit=crop" alt="First Upload" class="w-full h-48 object-cover rounded-xl" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&dpr=2'; this.onerror=null;" />
+                        </div>
+                    </div>
+
+                    <!-- Stage 2: Finding Your Niche -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <img src="https://images.pixabay.com/photo/2020/05/18/16/17/social-media-5187243_960_720.png" alt="Finding Niche" class="w-full h-48 object-cover rounded-xl" onerror="this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=300&auto=format&fit=crop'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center border-4 border-background">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-background rounded-2xl p-6 border border-subtle">
+                                <h3 class="text-xl font-bold mb-2">Finding Your Niche</h3>
+                                <p class="text-text-secondary mb-4">Discover what content resonates with your audience</p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-bold text-secondary">Week 2-4</div>
+                                        <div class="text-text-secondary">1K-5K followers</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-accent">10K-50K</div>
+                                        <div class="text-text-secondary">Average views</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3: First Viral Moment -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-background rounded-2xl p-6 border border-subtle">
+                                <h3 class="text-xl font-bold mb-2">First Viral Moment</h3>
+                                <p class="text-text-secondary mb-4">Your content catches fire and reaches millions</p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-bold text-accent">Month 2-3</div>
+                                        <div class="text-text-secondary">50K-200K followers</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-error">1M+</div>
+                                        <div class="text-text-secondary">Viral video views</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center border-4 border-background">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=300&auto=format&fit=crop" alt="Viral Moment" class="w-full h-48 object-cover rounded-xl" onerror="this.src='https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&dpr=2'; this.onerror=null;" />
+                        </div>
+                    </div>
+
+                    <!-- Stage 4: Monetization -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?q=80&w=300&auto=format&fit=crop" alt="Monetization" class="w-full h-48 object-cover rounded-xl" onerror="this.src='https://images.pexels.com/photos/3483098/pexels-photo-3483098.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&dpr=2'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center border-4 border-background">
+                            <span class="text-white font-bold">4</span>
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-background rounded-2xl p-6 border border-subtle">
+                                <h3 class="text-xl font-bold mb-2">Monetization Success</h3>
+                                <p class="text-text-secondary mb-4">Turn your passion into sustainable income</p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-bold text-primary">Month 6+</div>
+                                        <div class="text-text-secondary">500K+ followers</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-accent">$5K-50K</div>
+                                        <div class="text-text-secondary">Monthly earnings</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Dashboard Preview -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    <span class="text-gradient">Analytics Dashboard Preview</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Track your performance, understand your audience, and optimize your content strategy with detailed insights.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Performance Metrics -->
+                <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                    <h3 class="text-xl font-bold mb-6">Performance Overview</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Total Views</span>
+                            <span class="text-2xl font-bold text-accent">2.4M</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Engagement Rate</span>
+                            <span class="text-2xl font-bold text-secondary">8.5%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Followers Growth</span>
+                            <span class="text-2xl font-bold text-primary">+15.2%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Revenue This Month</span>
+                            <span class="text-2xl font-bold text-accent">$12,450</span>
+                        </div>
+                    </div>
+
+                    <!-- Mini Chart -->
+                    <div class="mt-6 h-32 bg-background rounded-lg flex items-end justify-center p-4">
+                        <div class="flex items-end space-x-2 h-full">
+                            <div class="w-4 bg-primary rounded-t" style="height: 40%"></div>
+                            <div class="w-4 bg-secondary rounded-t" style="height: 60%"></div>
+                            <div class="w-4 bg-accent rounded-t" style="height: 80%"></div>
+                            <div class="w-4 bg-primary rounded-t" style="height: 100%"></div>
+                            <div class="w-4 bg-secondary rounded-t" style="height: 75%"></div>
+                            <div class="w-4 bg-accent rounded-t" style="height: 90%"></div>
+                            <div class="w-4 bg-primary rounded-t" style="height: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audience Insights -->
+                <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                    <h3 class="text-xl font-bold mb-6">Audience Insights</h3>
+                    
+                    <!-- Demographics -->
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-text-secondary">Age 18-24</span>
+                                <span class="text-sm font-medium">45%</span>
+                            </div>
+                            <div class="w-full bg-background rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-text-secondary">Age 25-34</span>
+                                <span class="text-sm font-medium">35%</span>
+                            </div>
+                            <div class="w-full bg-background rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-text-secondary">Age 35+</span>
+                                <span class="text-sm font-medium">20%</span>
+                            </div>
+                            <div class="w-full bg-background rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Locations -->
+                    <div>
+                        <h4 class="font-semibold mb-3">Top Locations</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">🇺🇸 United States</span>
+                                <span class="text-sm font-medium">32%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">🇬🇧 United Kingdom</span>
+                                <span class="text-sm font-medium">18%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">🇨🇦 Canada</span>
+                                <span class="text-sm font-medium">12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Performance -->
+                <div class="bg-surface rounded-2xl p-6 border border-subtle">
+                    <h3 class="text-xl font-bold mb-6">Top Performing Content</h3>
+                    <div class="space-y-4">
+                        <!-- Top Video 1 -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-16 h-16 bg-background rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=100&auto=format&fit=crop" alt="Top Video 1" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2'; this.onerror=null;" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium">Dance Challenge #viral</p>
+                                <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                    <span>1.2M views</span>
+                                    <span>95K likes</span>
+                                    <span>12K shares</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Video 2 -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-16 h-16 bg-background rounded-lg overflow-hidden">
+                                <img src="https://images.pixabay.com/photo/2020/05/18/16/17/social-media-5187243_960_720.png" alt="Top Video 2" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=100&auto=format&fit=crop'; this.onerror=null;" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium">Behind the Scenes</p>
+                                <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                    <span>850K views</span>
+                                    <span>72K likes</span>
+                                    <span>8.5K shares</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Video 3 -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-16 h-16 bg-background rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=100&auto=format&fit=crop" alt="Top Video 3" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2'; this.onerror=null;" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium">Tutorial Tuesday</p>
+                                <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                    <span>650K views</span>
+                                    <span>58K likes</span>
+                                    <span>6.2K shares</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View Full Analytics Button -->
+                    <div class="mt-6">
+                        <a href="download_app.html" class="block w-full text-center px-4 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-smooth">
+                            View Full Analytics
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Support -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    <span class="text-gradient">Community & Support</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Join a thriving community of creators with access to education, collaboration opportunities, and dedicated support.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Creator Education -->
+                <div class="bg-background rounded-2xl p-8 border border-subtle hover:border-primary/30 transition-smooth">
+                    <div class="w-16 h-16 rounded-xl gradient-primary flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Creator Education</h3>
+                    <p class="text-text-secondary mb-6">
+                        Free courses, workshops, and masterclasses from top creators and industry experts.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Video editing masterclasses</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Trend forecasting workshops</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Monetization strategies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collaboration Hub -->
+                <div class="bg-background rounded-2xl p-8 border border-subtle hover:border-secondary/30 transition-smooth">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2 1l-3 4v7h2v7h3v-7h1v7h3zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 10v3h2v7h2v-7h2v-3c0-1.33-.67-2-1.5-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Collaboration Hub</h3>
+                    <p class="text-text-secondary mb-6">
+                        Connect with other creators for duets, challenges, and cross-promotion opportunities.
+                    </p>
+                    <div class="flex -space-x-2 mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=40&auto=format&fit=crop" alt="Collaborator 1" class="w-8 h-8 rounded-full border-2 border-background object-cover" onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&dpr=2'; this.onerror=null;" />
+                        <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg" alt="Collaborator 2" class="w-8 h-8 rounded-full border-2 border-background object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=40&auto=format&fit=crop'; this.onerror=null;" />
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=40&auto=format&fit=crop" alt="Collaborator 3" class="w-8 h-8 rounded-full border-2 border-background object-cover" onerror="this.src='https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&dpr=2'; this.onerror=null;" />
+                        <div class="w-8 h-8 rounded-full border-2 border-background bg-secondary flex items-center justify-center text-xs font-bold text-white">
+                            +50K
+                        </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">Active creators ready to collaborate</p>
+                </div>
+
+                <!-- 24/7 Support -->
+                <div class="bg-background rounded-2xl p-8 border border-subtle hover:border-accent/30 transition-smooth">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">24/7 Creator Support</h3>
+                    <p class="text-text-secondary mb-6">
+                        Dedicated support team available around the clock to help with technical issues and creator questions.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Live chat support</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Video tutorials library</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                            <span>Community forums</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creator Resources -->
+            <div class="mt-16 bg-background rounded-2xl p-8 border border-subtle">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Free Creator Resources</h3>
+                        <p class="text-text-secondary mb-6">
+                            Download our comprehensive guides, templates, and tools to accelerate your creator journey.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="download_app.html" class="flex items-center p-4 bg-surface rounded-lg border border-subtle hover:border-primary/30 transition-smooth">
+                                <div class="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Creator Handbook</div>
+                                    <div class="text-xs text-text-secondary">PDF Guide</div>
+                                </div>
+                            </a>
+                            <a href="download_app.html" class="flex items-center p-4 bg-surface rounded-lg border border-subtle hover:border-secondary/30 transition-smooth">
+                                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Content Templates</div>
+                                    <div class="text-xs text-text-secondary">Design Pack</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?q=80&w=400&auto=format&fit=crop" alt="Creator Resources" class="w-full max-w-sm mx-auto rounded-xl" onerror="this.src='https://images.pexels.com/photos/3483098/pexels-photo-3483098.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2'; this.onerror=null;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                <span class="text-gradient">Ready to Start Your</span><br />
+                <span class="text-white">Creator Journey?</span>
+            </h2>
+            <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+                Join millions of creators who've turned their passion into success. Download TikVibe and start creating today.
+            </p>
+
+            <!-- App Download Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="download_app.html" class="inline-flex items-center justify-center px-8 py-4 rounded-full gradient-primary text-white font-semibold text-lg hover:gradient-primary-hover transition-smooth shadow-floating">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    Download for iOS
+                </a>
+                <a href="download_app.html" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-green-600 text-white font-semibold text-lg hover:bg-green-700 transition-smooth shadow-floating">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                    </svg>
+                    Get it on Google Play
+                </a>
+            </div>
+
+            <!-- Trust Signals -->
+            <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-text-secondary">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></div>
+                    <span>150M+ creators worldwide</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-secondary rounded-full mr-2 animate-pulse"></div>
+                    <span>$2.4M paid to creators monthly</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
+                    <span>4.8★ App Store rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-subtle py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.219-5.175 1.219-5.175s-.311-.623-.311-1.544c0-1.446.839-2.525 1.883-2.525.888 0 1.317.666 1.317 1.466 0 .893-.568 2.229-.861 3.467-.245 1.04.522 1.887 1.549 1.887 1.857 0 3.285-1.958 3.285-4.789 0-2.503-1.799-4.253-4.37-4.253-2.977 0-4.727 2.234-4.727 4.546 0 .9.347 1.863.78 2.388.085.104.098.195.072.301-.079.329-.255 1.045-.289 1.193-.045.189-.147.229-.339.138-1.273-.593-2.068-2.456-2.068-3.956 0-3.298 2.397-6.325 6.913-6.325 3.628 0 6.447 2.584 6.447 6.041 0 3.604-2.273 6.505-5.42 6.505-1.058 0-2.055-.549-2.394-1.275 0 0-.524 1.994-.651 2.48-.236.908-.873 2.047-1.301 2.741C9.368 23.977 10.66 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">TikVibe</span>
+                    </div>
+                    <p class="text-text-secondary mb-4">
+                        Where culture happens. Create without limits and discover your tribe.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="w-10 h-10 rounded-lg bg-background border border-subtle flex items-center justify-center hover:border-primary/30 transition-smooth">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="w-10 h-10 rounded-lg bg-background border border-subtle flex items-center justify-center hover:border-primary/30 transition-smooth">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="w-10 h-10 rounded-lg bg-background border border-subtle flex items-center justify-center hover:border-primary/30 transition-smooth">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.219-5.175 1.219-5.175s-.311-.623-.311-1.544c0-1.446.839-2.525 1.883-2.525.888 0 1.317.666 1.317 1.466 0 .893-.568 2.229-.861 3.467-.245 1.04.522 1.887 1.549 1.887 1.857 0 3.285-1.958 3.285-4.789 0-2.503-1.799-4.253-4.37-4.253-2.977 0-4.727 2.234-4.727 4.546 0 .9.347 1.863.78 2.388.085.104.098.195.072.301-.079.329-.255 1.045-.289 1.193-.045.189-.147.229-.339.138-1.273-.593-2.068-2.456-2.068-3.956 0-3.298 2.397-6.325 6.913-6.325 3.628 0 6.447 2.584 6.447 6.041 0 3.604-2.273 6.505-5.42 6.505-1.058 0-2.055-.549-2.394-1.275 0 0-.524 1.994-.651 2.48-.236.908-.873 2.047-1.301 2.741C9.368 23.977 10.66 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Platform</h3>
+                    <ul class="space-y-2">
+                        <li><a href="creator_hub.html" class="text-text-secondary hover:text-primary transition-quick">Creator Hub</a></li>
+                        <li><a href="discover_trends.html" class="text-text-secondary hover:text-primary transition-quick">Discover</a></li>
+                        <li><a href="business_solutions.html" class="text-text-secondary hover:text-primary transition-quick">Business</a></li>
+                        <li><a href="download_app.html" class="text-text-secondary hover:text-primary transition-quick">Download</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about_tik_vibe.html" class="text-text-secondary hover:text-primary transition-quick">About Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Careers</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Press</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Community Guidelines</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-quick">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-subtle mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between">
+                <p class="text-text-secondary text-sm">
+                    © 2025 TikVibe. All Rights Reserved.
+                </p>
+                <div class="flex items-center space-x-6 mt-4 sm:mt-0">
+                    <span class="text-text-secondary text-sm">Made with ❤️ for creators worldwide</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const button = event.target.closest('button');
+            
+            if (!menu.contains(event.target) && !button) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-background/95');
+            } else {
+                header.classList.remove('bg-background/95');
+            }
+        });
+
+        // Interactive timeline hover effects
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.classList.add('scale-105');
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.classList.remove('scale-105');
+            });
+        });
+    </script>
+</body>
+</html>

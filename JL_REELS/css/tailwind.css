@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #6366F1; /* indigo-500 */
+  --color-primary-50: #EEF2FF; /* indigo-50 */
+  --color-primary-100: #E0E7FF; /* indigo-100 */
+  --color-primary-200: #C7D2FE; /* indigo-200 */
+  --color-primary-300: #A5B4FC; /* indigo-300 */
+  --color-primary-400: #818CF8; /* indigo-400 */
+  --color-primary-500: #6366F1; /* indigo-500 */
+  --color-primary-600: #4F46E5; /* indigo-600 */
+  --color-primary-700: #4338CA; /* indigo-700 */
+  --color-primary-800: #3730A3; /* indigo-800 */
+  --color-primary-900: #312E81; /* indigo-900 */
+
+  /* Secondary Colors */
+  --color-secondary: #EC4899; /* pink-500 */
+  --color-secondary-50: #FDF2F8; /* pink-50 */
+  --color-secondary-100: #FCE7F3; /* pink-100 */
+  --color-secondary-200: #FBCFE8; /* pink-200 */
+  --color-secondary-300: #F9A8D4; /* pink-300 */
+  --color-secondary-400: #F472B6; /* pink-400 */
+  --color-secondary-500: #EC4899; /* pink-500 */
+  --color-secondary-600: #DB2777; /* pink-600 */
+  --color-secondary-700: #BE185D; /* pink-700 */
+  --color-secondary-800: #9D174D; /* pink-800 */
+  --color-secondary-900: #831843; /* pink-900 */
+
+  /* Accent Colors */
+  --color-accent: #10B981; /* emerald-500 */
+  --color-accent-50: #ECFDF5; /* emerald-50 */
+  --color-accent-100: #D1FAE5; /* emerald-100 */
+  --color-accent-200: #A7F3D0; /* emerald-200 */
+  --color-accent-300: #6EE7B7; /* emerald-300 */
+  --color-accent-400: #34D399; /* emerald-400 */
+  --color-accent-500: #10B981; /* emerald-500 */
+  --color-accent-600: #059669; /* emerald-600 */
+  --color-accent-700: #047857; /* emerald-700 */
+  --color-accent-800: #065F46; /* emerald-800 */
+  --color-accent-900: #064E3B; /* emerald-900 */
+
+  /* Background Colors */
+  --color-background: #0F0F23; /* slate-900 */
+  --color-surface: #1E1E2E; /* slate-800 */
+  --color-surface-light: #334155; /* slate-700 */
+
+  /* Text Colors */
+  --color-text-primary: #F8FAFC; /* slate-50 */
+  --color-text-secondary: #94A3B8; /* slate-400 */
+  --color-text-muted: #64748B; /* slate-500 */
+
+  /* Status Colors */
+  --color-success: #22C55E; /* green-500 */
+  --color-success-50: #F0FDF4; /* green-50 */
+  --color-success-100: #DCFCE7; /* green-100 */
+  --color-success-500: #22C55E; /* green-500 */
+  --color-success-600: #16A34A; /* green-600 */
+
+  --color-warning: #F59E0B; /* amber-500 */
+  --color-warning-50: #FFFBEB; /* amber-50 */
+  --color-warning-100: #FEF3C7; /* amber-100 */
+  --color-warning-500: #F59E0B; /* amber-500 */
+  --color-warning-600: #D97706; /* amber-600 */
+
+  --color-error: #EF4444; /* red-500 */
+  --color-error-50: #FEF2F2; /* red-50 */
+  --color-error-100: #FEE2E2; /* red-100 */
+  --color-error-500: #EF4444; /* red-500 */
+  --color-error-600: #DC2626; /* red-600 */
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #4F46E5 0%, #DB2777 100%);
+}
+
+/* Custom Utilities */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-primary-hover:hover {
+  background: var(--gradient-primary-hover);
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation Classes */
+.transition-smooth {
+  transition: all 300ms ease-out;
+}
+
+.transition-quick {
+  transition: all 200ms ease-out;
+}
+
+.transition-page {
+  transition: all 400ms ease-out;
+}
+
+/* Shadow Utilities */
+.shadow-floating {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-subtle {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Border Utilities */
+.border-subtle {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.border-surface {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
