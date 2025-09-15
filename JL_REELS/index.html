@@ -1,85 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TikVibe Mobile - Short Video Platform</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        
-        .redirect-container {
-            text-align: center;
-            color: white;
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        .logo {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .loading-text {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftikvibemo1296back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>JL Reels</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      position: relative;
+    }
+
+    /* Hide desktop */
+    @media (min-width: 768px) {
+      body::before {
+        content: "⚠️ Mobile Only Site";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        z-index: 9999;
+      }
+      video, .overlay, .redirect-container {
+        display: none !important;
+      }
+    }
+
+    /* 🔹 Background videos */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .video-bg.active {
+      opacity: 1;
+      z-index: -1;
+    }
+
+    /* Dark overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+
+    .redirect-container {
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .logo-img {
+      width: 120px;
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.6));
+      transition: transform 0.1s ease-in-out;
+    }
+
+    /* 🔹 Beat pop effect */
+    .beat {
+      transform: scale(1.2);
+    }
+  </style>
 </head>
 <body>
-    <div class="redirect-container">
-        <div class="logo">TikVibe</div>
-        <div class="loading-text">Welcome to TikVibe Mobile</div>
-        <div class="spinner"></div>
-    </div>
+  <!-- Two background videos for crossfade -->
+  <video id="video1" class="video-bg active" playsinline autoplay muted></video>
+  <video id="video2" class="video-bg" playsinline autoplay muted></video>
 
-    <script>
-        // Redirect to homepage after 2 seconds
-        setTimeout(function() {
-            window.location.href = 'pages/homepage.html';
-        }, 2000);
-        
-        // Fallback redirect in case of any issues
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')) {
-                    window.location.replace('pages/homepage.html');
-                }
-            }, 2500);
-        });
-    </script>
+  <div class="overlay"></div>
+
+  <div class="redirect-container">
+    <img src="assets/logo/JL.png" alt="JL Reels Logo" class="logo-img" id="logoTrigger" />
+    <div class="logo">JL Reels</div>
+  </div>
+
+  <script>
+    const allVideos = [
+      "reels/meme1.mp4",
+      "reels/meme2.mp4",
+      "reels/meme3.mp4",
+      "reels/meme4.mp4",
+      "reels/meme5.mp4",
+      "reels/meme6.mp4",
+      "reels/meme7.mp4",
+      "reels/meme8.mp4",
+      "reels/meme9.mp4",
+      "reels/meme10.mp4"
+    ];
+
+    let playlist = [];
+    let currentIndex = 0;
+    let activeVideo = 1;
+
+    const video1 = document.getElementById("video1");
+    const video2 = document.getElementById("video2");
+    const logo = document.getElementById("logoTrigger");
+
+    // Shuffle function
+    function shuffleArray(array) {
+      return array
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+    }
+
+    function loadNextVideo() {
+      if (currentIndex >= playlist.length) {
+        playlist = shuffleArray(allVideos);
+        currentIndex = 0;
+      }
+
+      const nextVideo = playlist[currentIndex];
+      currentIndex++;
+
+      if (activeVideo === 1) {
+        video2.src = nextVideo;
+        video2.play();
+        video2.classList.add("active");
+        video1.classList.remove("active");
+        activeVideo = 2;
+      } else {
+        video1.src = nextVideo;
+        video1.play();
+        video1.classList.add("active");
+        video2.classList.remove("active");
+        activeVideo = 1;
+      }
+    }
+
+    // Initialize playlist and start first muted video
+    playlist = shuffleArray(allVideos);
+    video1.src = playlist[currentIndex++];
+    video1.play();
+
+    // On first user tap → unmute videos
+    document.body.addEventListener("click", () => {
+      video1.muted = false;
+      video2.muted = false;
+    }, { once: true });
+
+    // When active video ends → load next
+    video1.addEventListener("ended", loadNextVideo);
+    video2.addEventListener("ended", loadNextVideo);
+
+    // Logo click → go to home
+    logo.addEventListener("click", function() {
+      window.location.href = "pages/home.html";
+    });
+
+    // Fake "beatbox" pulse effect
+    setInterval(() => {
+      logo.classList.add("beat");
+      setTimeout(() => logo.classList.remove("beat"), 150);
+    }, 700);
+  </script>
 </body>
 </html>
