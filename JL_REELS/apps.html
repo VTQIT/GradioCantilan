@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>Reels Player</title>
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: #fff;
+  }
+
+  /* Header */
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 50px;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 20;
+  }
+
+  .header .logo img {
+    height: 40px;
+  }
+
+  .header .home-btn {
+    background: #ff4444;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  /* Video container */
+  .container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+  }
+
+  video.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Right-side controls */
+  .controls {
+    position: absolute;
+    right: 15px;
+    bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .controls button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Bottom info */
+  .video-info {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 90px;
+    font-size: 14px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .video-info.active {
+    opacity: 1;
+  }
+
+  .video-info .channel {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  /* Mute indicator */
+  .mute-indicator {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 10;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo">
+    <img src="assets/logo/JL.png" alt="Logo">
+  </div>
+  <a href="../home.html"><button class="home-btn">Home</button></a>
+</div>
+
+<div class="container" id="videoContainer">
+  <!-- Videos injected by JS -->
+  <div class="controls">
+    <button>❤️</button>
+    <button>💬</button>
+    <button>↗️</button>
+  </div>
+
+  <div class="mute-indicator" id="muteStatus">Muted</div>
+</div>
+
+<script>
+// 🔹 Generate playlist (meme1.mp4 to meme10.mp4)
+let videoFiles = [];
+for (let i = 1; i <= 10; i++) {
+  videoFiles.push(`reels/meme${i}.mp4`);
+}
+
+// 🔹 Shuffle playlist
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+videoFiles = shuffle(videoFiles);
+
+const container = document.getElementById("videoContainer");
+const muteStatus = document.getElementById("muteStatus");
+let currentIndex = 0;
+let videos = [];
+let infos = [];
+
+// 🔹 Inject videos
+videoFiles.forEach((src, i) => {
+  const video = document.createElement("video");
+  video.src = src;
+  video.setAttribute("playsinline", "");
+  video.muted = true;
+  video.loop = false;
+  if (i === 0) video.classList.add("active");
+  container.insertBefore(video, container.firstChild);
+  videos.push(video);
+
+  // Info
+  const info = document.createElement("div");
+  info.className = "video-info";
+  info.innerHTML = `
+    <div class="channel">@channel_${i+1}</div>
+    <div class="desc">Meme video ${i+1}</div>
+  `;
+  if (i === 0) info.classList.add("active");
+  container.insertBefore(info, container.querySelector(".controls"));
+  infos.push(info);
+
+  // When video ends → go to next
+  video.addEventListener("ended", () => {
+    nextVideo();
+  });
+});
+
+// Autoplay first video
+videos[currentIndex].play();
+
+// Swipe detection
+let startY = 0;
+container.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+container.addEventListener("touchend", e => {
+  let endY = e.changedTouches[0].clientY;
+  if (startY - endY > 50) nextVideo();
+  else if (endY - startY > 50) prevVideo();
+});
+
+// Tap anywhere to toggle mute
+container.addEventListener("click", e => {
+  if (e.target.tagName === "BUTTON") return;
+  let video = videos[currentIndex];
+  video.muted = !video.muted;
+  muteStatus.textContent = video.muted ? "Muted" : "Sound On";
+});
+
+function showVideo(index) {
+  // Hide old
+  videos[currentIndex].pause();
+  videos[currentIndex].classList.remove("active");
+  infos[currentIndex].classList.remove("active");
+
+  // Loop
+  if (index < 0) index = videos.length - 1;
+  if (index >= videos.length) index = 0;
+  currentIndex = index;
+
+  // Show new
+  videos[currentIndex].currentTime = 0;
+  videos[currentIndex].classList.add("active");
+  infos[currentIndex].classList.add("active");
+  videos[currentIndex].muted = true;
+  videos[currentIndex].play();
+  muteStatus.textContent = "Muted";
+}
+
+function nextVideo() { showVideo(currentIndex + 1); }
+function prevVideo() { showVideo(currentIndex - 1); }
+</script>
+</body>
+</html>
