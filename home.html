@@ -8,16 +8,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
   /* Reset */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; overflow-x: hidden; font-family: Arial, sans-serif; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  /* Background Canvas */
-  #galaxy-canvas {
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Background Video */
+  .bg-video {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: -1;
-    display: block;
   }
 
   /* 🚫 Block desktop view */
@@ -25,10 +36,11 @@
     #desktop-block { display: flex !important; }
     body > *:not(#desktop-block) { display: none !important; }
   }
+  
+  body { color: #fff; } /* Transparent body background */
 
-  body { color: #fff; }
   .app-icon img { width: 64px; height: 64px; border-radius: 50%; }
-  .app-icon { background: transparent !important; }
+  .app-icon { background: transparent !important; } /* Transparent app icons */
   .swiper-button-next, .swiper-button-prev { display: none !important; }
 
   /* Marquee */
@@ -63,9 +75,11 @@
 </style>
 </head>
 <body class="text-white">
-
-  <!-- 🌌 Galaxy Background -->
-  <canvas id="galaxy-canvas"></canvas>
+  <!-- Background Video -->
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/background/space.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <!-- 🚫 Desktop Block Message -->
   <div id="desktop-block" class="hidden fixed inset-0 bg-black text-white flex items-center justify-center text-center z-50">
@@ -149,171 +163,171 @@
   </div>
 
   <!-- App Slider -->
-  <div class="w-full max-w-2xl">
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <div class="grid grid-cols-3 gap-6">
-            <div class="flex flex-col items-center text-center">
-              <a href="VP.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/inday.jpg" alt="Gov Johnny">
-                </div>
-                <p class="mt-2 text-xs">VP Inday Sara</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="gov.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/johnny.png" alt="Mayor Digoy">
-                </div>
-                <p class="mt-2 text-xs">Gov. Johnny</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="mayor.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/digoy.png" alt="Cantilan LGU">
-                </div>
-                <p class="mt-2 text-xs">Mayor Digoy </p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="cantilan.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/wecantilan.png" alt="We Cantilan">
-                </div>
-                <p class="mt-2 text-xs">We❤Cantilan</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="elonx.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/logo/spacex2.png" alt="Gradio FM">
-                </div>
-                <p class="mt-2 text-xs">SpaceX Ai Space Capsule</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="movie_streaming/index.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/smileflex.png" alt="Smileflex">
-                </div>
-                <p class="mt-2 text-xs">Smileflex</p>
-              </a>
-            </div>
+<div class="w-full max-w-2xl">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <a href="VP.html" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/inday.jpg" alt="Gov Johnny">
+              </div>
+              <p class="mt-2 text-xs">VP Inday Sara</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="gov.html" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/johnny.png" alt="Mayor Digoy">
+              </div>
+              <p class="mt-2 text-xs">Gov. Johnny</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="mayor.html" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/digoy.png" alt="Cantilan LGU">
+              </div>
+              <p class="mt-2 text-xs">Mayor Digoy </p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="cantilan.html" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/wecantilan.png" alt="We Cantilan">
+              </div>
+              <p class="mt-2 text-xs">We❤Cantilan</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="gradio.html" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/GRADIO.png" alt="Gradio FM">
+              </div>
+              <p class="mt-2 text-xs">Gradio</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="JL_REELS/index.html" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/logo/JL.png" alt="Smileflex">
+              </div>
+              <p class="mt-2 text-xs">JL Reels</p>
+            </a>
           </div>
         </div>
+      </div>
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="grid grid-cols-3 gap-6">
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/musify.png" alt="Musify">
-                </div>
-                <p class="mt-2 text-xs">Musify</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="JL_REELS/index.html" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/logo/JL.png" alt="Game Hub">
-                </div>
-                <p class="mt-2 text-xs">JL Reels</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/orangeware.png" alt="OrangeWare">
-                </div>
-                <p class="mt-2 text-xs">OrangeWare</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/wikipedia.png" alt="Wikipedia">
-                </div>
-                <p class="mt-2 text-xs">Wikipedia</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/ebooks.png" alt="eBooks">
-                </div>
-                <p class="mt-2 text-xs">eBooks</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/news.png" alt="News Daily">
-                </div>
-                <p class="mt-2 text-xs">News Daily</p>
-              </a>
-            </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/musify.png" alt="Musify">
+              </div>
+              <p class="mt-2 text-xs">Musify</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/gamehub.png" alt="Game Hub">
+              </div>
+              <p class="mt-2 text-xs">Game Hub</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/orangeware.png" alt="OrangeWare">
+              </div>
+              <p class="mt-2 text-xs">OrangeWare</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/wikipedia.png" alt="Wikipedia">
+              </div>
+              <p class="mt-2 text-xs">Wikipedia</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/ebooks.png" alt="eBooks">
+              </div>
+              <p class="mt-2 text-xs">eBooks</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/news.png" alt="News Daily">
+              </div>
+              <p class="mt-2 text-xs">News Daily</p>
+            </a>
           </div>
         </div>
+      </div>
 
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="grid grid-cols-3 gap-6">
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/eatbulaga.png" alt="Eat Bulaga">
-                </div>
-                <p class="mt-2 text-xs">Eat Bulaga</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/showtime.jpg" alt="Showtime">
-                </div>
-                <p class="mt-2 text-xs">Showtime</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/wetube.png" alt="WeTube">
-                </div>
-                <p class="mt-2 text-xs">WeTube</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/videoke.png" alt="Videoke Star">
-                </div>
-                <p class="mt-2 text-xs">Videoke Star</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/bible.jpg" alt="Bible">
-                </div>
-                <p class="mt-2 text-xs">Bible</p>
-              </a>
-            </div>
-            <div class="flex flex-col items-center text-center">
-              <a href="#" target="_blank" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
-                  <img src="assets/icons/google.jpg" alt="Google">
-                </div>
-                <p class="mt-2 text-xs">Google</p>
-              </a>
-            </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/eatbulaga.png" alt="Eat Bulaga">
+              </div>
+              <p class="mt-2 text-xs">Eat Bulaga</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/showtime.jpg" alt="Showtime">
+              </div>
+              <p class="mt-2 text-xs">Showtime</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/wetube.png" alt="WeTube">
+              </div>
+              <p class="mt-2 text-xs">WeTube</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/videoke.png" alt="Videoke Star">
+              </div>
+              <p class="mt-2 text-xs">Videoke Star</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/bible.jpg" alt="Bible">
+              </div>
+              <p class="mt-2 text-xs">Bible</p>
+            </a>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <a href="#" class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-md app-icon">
+                <img src="assets/icons/google.jpg" alt="Google">
+              </div>
+              <p class="mt-2 text-xs">Google</p>
+            </a>
           </div>
         </div>
+      </div>
       <!-- Pagination -->
       <div class="swiper-pagination mt-4"></div>
     </div>
@@ -412,79 +426,16 @@
     </div>
   </div>
   
-  <div class="mt-6 w-full flex justify-center">
-    <a href="https://limewire.com/d/aUE1D#cqrsJL0m5e"
-       class="bg-green-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-green-500 transition">
-       📱 Download Gradio App
-    </a>
-  </div>
- 
-  <!-- 🔥 Galaxy Animation Script -->
-  <script>
-    const canvas = document.getElementById("galaxy-canvas");
-    const ctx = canvas.getContext("2d");
-    let w, h, stars = [];
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      stars = [];
-      for (let i = 0; i < 400; i++) {
-        let r = Math.random() * 1.5 + 0.5; // star radius
-        stars.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          r: r,
-          // ⭐ bigger stars move faster (depth effect)
-          vx: (Math.random() - 0.5) * (0.6 * r),
-          vy: (Math.random() - 0.5) * (0.6 * r),
-          hue: 200 + Math.random() * 100,
-          tw: Math.random() * Math.PI * 2
-        });
-      }
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    function draw() {
-      ctx.fillStyle = "rgba(3, 3, 20, 1)";
-      ctx.fillRect(0, 0, w, h);
-
-      for (let s of stars) {
-        s.x += s.vx;
-        s.y += s.vy;
-        if (s.x < 0) s.x = w;
-        if (s.x > w) s.x = 0;
-        if (s.y < 0) s.y = h;
-        if (s.y > h) s.y = 0;
-
-        s.tw += 0.05;
-        let twinkle = 0.6 + 0.4 * Math.sin(s.tw);
-        const radius = s.r * twinkle;
-
-        // ✨ Star
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${s.hue}, 80%, 70%, 0.8)`;
-
-        // Dim smaller stars
-        ctx.globalAlpha = s.r < 1 ? 0.5 : 1;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-
-        // Glow
-        let glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, radius * 5);
-        glow.addColorStop(0, `hsla(${s.hue}, 90%, 70%, 0.1)`);
-        glow.addColorStop(1, "transparent");
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, radius * 5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
+  <div class="mt-6 w-full flex justify-center gap-4">
+  <a href="https://limewire.com/d/aUE1D#cqrsJL0m5e"
+     class="bg-transparent text-white px-6 py-3 rounded-full shadow-lg hover:bg-white hover:text-black transition">
+     📱 Download App
+  </a>
+  <button onclick="location.reload()"
+          class="bg-transparent text-white px-6 py-3 rounded-full shadow-lg hover:bg-white hover:text-black transition">
+     🔄 Refresh
+  </button>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
